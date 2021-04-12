@@ -1,13 +1,12 @@
-// let user = 'John Doe';
-// console.log(user);
+let user = 'John Doe';
+console.log(user);
 let student = 'Ihar';
 console.log(student);
 user = student;
 // 'Ihar'
 console.log(user);
 
-let test;
-test = 1;
+let test = 1;
 console.log(test);
 
 test = test + 1;
