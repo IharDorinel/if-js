@@ -87,5 +87,5 @@ console.log(max(5,4))
 const array = Array.from({length:10}, () => Math.floor(Math.random() * 100));
 let char = /0/gi;
 let str = array.toString();
-let newstr = str.replace(char, 'zero');
+let newstr = str.replaceAll(char, 'zero');
 console.log(newstr)
