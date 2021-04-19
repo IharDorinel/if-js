@@ -1,3 +1,5 @@
+// Homework lesson-2
+
 let user = 'John Doe';
 console.log(user);
 let student = 'Ihar';
@@ -45,7 +47,7 @@ for (i = 0; i < array3.length; i++) {
     }
 }
 
-// Homework lesson-3
+//  Homework lesson-3
 
 function palindrome(str) {
     let result = '';
@@ -87,3 +89,48 @@ for (let i = 0; i < array.length; i++) {
     }
 }
 console.log(array)
+
+// Homework lesson-4
+
+const getSum = (arg1) => {
+    return (arg2) => {
+        arg1 += arg2;
+        return arg1;
+    }
+}
+console.log(getSum(5)(2));
+
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+let color1 = 0;
+let color2 = 0;
+let color3 = 0;
+
+text1.addEventListener('click', () => {
+    text1.style.background = colors[color1];
+    color1++;
+    if (color1 === colors.length) {
+        color1 = 0;
+        }
+})
+
+text2.addEventListener('click', () => {
+    text2.style.background = colors[color2];
+    color2++;
+    if (color2 === colors.length) {
+        color2 = 0;
+    }
+})
+
+text3.addEventListener('click', () => {
+    text3.style.background = colors[color3];
+    color3++;
+    if (color3 === colors.length) {
+        color3 = 0;
+    }
+})
+
+console.log(text1, text2, text3)
+
