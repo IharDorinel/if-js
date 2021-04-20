@@ -108,6 +108,7 @@ let color1 = 0;
 let color2 = 0;
 let color3 = 0;
 
+
 text1.addEventListener('click', () => {
     text1.style.background = colors[color1];
     color1++;
