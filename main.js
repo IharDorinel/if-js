@@ -94,8 +94,7 @@ console.log(array)
 
 const getSum = (arg1) => {
     return (arg2) => {
-        arg1 += arg2;
-        return arg1;
+        return arg1 + arg2;
     }
 }
 console.log(getSum(5)(2));
@@ -104,34 +103,36 @@ const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
-let color1 = 0;
-let color2 = 0;
-let color3 = 0;
 
-
-text1.addEventListener('click', () => {
-    text1.style.background = colors[color1];
-    color1++;
-    if (color1 === colors.length) {
-        color1 = 0;
+function changeColor1() {
+    let color = 0;
+    text1.addEventListener('click', () => {
+        text1.style.background = colors[color];
+        color++;
+        if (color === colors.length) {
+            color = 0;
         }
-})
-
-text2.addEventListener('click', () => {
-    text2.style.background = colors[color2];
-    color2++;
-    if (color2 === colors.length) {
-        color2 = 0;
-    }
-})
-
-text3.addEventListener('click', () => {
-    text3.style.background = colors[color3];
-    color3++;
-    if (color3 === colors.length) {
-        color3 = 0;
-    }
-})
-
+    })
+}
+function changeColor2() {
+    let color = 0;
+    text2.addEventListener('click', () => {
+        text2.style.background = colors[color];
+        color++;
+        if (color === colors.length) {
+            color = 0;
+        }
+    })
+}
+function changeColor3() {
+    let color = 0;
+    text3.addEventListener('click', () => {
+        text3.style.background = colors[color];
+        color++;
+        if (color === colors.length) {
+            color = 0;
+        }
+    })
+}
 console.log(text1, text2, text3)
 
