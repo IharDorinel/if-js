@@ -191,3 +191,63 @@ for (i in data) {
         console.log(result);
     }
 }
+
+// Homework lesson-6
+
+function isPalindrome (str) {
+    str === str.toLowerCase();
+    return str === str.split('').reverse().join('');
+};
+console.log(isPalindrome('Lol'))
+
+
+const data = [
+    {
+        country: 'Russia',
+        city: 'Saint Petersburg',
+        hotel: 'Hotel Leopold',
+    },
+    {
+        country: 'Spain',
+        city: 'Santa Cruz de Tenerife',
+        hotel: 'Apartment Sunshine',
+    },
+    {
+        country: 'Slowakia',
+        city: 'Vysokie Tatry',
+        hotel: 'Villa Kunerad',
+    },
+    {
+        country: 'Germany',
+        city: 'Berlin',
+        hotel: 'Hostel Friendship',
+    },
+    {
+        country: 'Indonesia',
+        city: 'Bali',
+        hotel: 'Ubud Bali Resort&SPA',
+    },
+    {
+        country: 'Netherlands',
+        city: 'Rotterdam',
+        hotel: 'King Kong Hostel',
+    },
+    {
+        country: 'Marocco',
+        city: 'Ourika',
+        hotel: 'Rokoko Hotel',
+    },
+    {
+        country: 'Germany',
+        city: 'Berlin',
+        hotel: 'Hotel Rehberge Berlin Mitte',
+    },
+];
+
+function search(items, searchVal) {
+
+    return items.filter(item =>
+        Object.values(item).toString().includes(searchVal)).map(({ country, city, hotel }) => `${[country, city, hotel].join(', ')}`).forEach(item => console.log(item));
+};
+
+console.log(search(data, "Berlin"))
