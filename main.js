@@ -67,7 +67,7 @@ function min(a,b) {
 }
 console.log(min(5,6));
 
-let min = (a,b) => a > b ? b : a;
+// let min = (a,b) => a > b ? b : a;
 
 
 function max(a,y) {
@@ -78,7 +78,7 @@ function max(a,y) {
 }
 console.log(max(5,6))
 
-let max = (a,y) => a > y ? a : y;
+// let max = (a,y) => a > y ? a : y;
 
 
 const array = Array.from({length:10}, () => Math.floor(Math.random() * 100));
@@ -104,35 +104,34 @@ const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 
-function changeColor1() {
-    let color = 0;
-    text1.addEventListener('click', () => {
-        text1.style.background = colors[color];
-        color++;
-        if (color === colors.length) {
-            color = 0;
-        }
-    })
+function changeColor(event) {
+    if (!event.target.style.background) {
+        event.target.style.background = colors[0];
+        return;
+
+    }
+    let colorIndex = colors.indexOf(event.target.style.background);
+    if (colorIndex === -1) {
+        console.log('Current color is not found in array');
+        console.log('Current color is: ', event.target.style.background);
+        return;
+    }
+    event.target.style.background = colors[++colorIndex];
+
 }
-function changeColor2() {
-    let color = 0;
-    text2.addEventListener('click', () => {
-        text2.style.background = colors[color];
-        color++;
-        if (color === colors.length) {
-            color = 0;
-        }
-    })
-}
-function changeColor3() {
-    let color = 0;
-    text3.addEventListener('click', () => {
-        text3.style.background = colors[color];
-        color++;
-        if (color === colors.length) {
-            color = 0;
-        }
-    })
-}
-console.log(text1, text2, text3)
+
+text1.addEventListener('click', () => {
+    changeColor(event)
+
+})
+text2.addEventListener('click', () => {
+    changeColor(event)
+
+})
+text3.addEventListener('click', () => {
+    changeColor(event)
+
+})
+
+
 
