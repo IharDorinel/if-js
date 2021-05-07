@@ -56,36 +56,39 @@ function palindrome(str) {
     }
     return str === result;
 }
+
 console.log(palindrome('шалаш'))
 
 
-function min(a,b) {
+function min(a, b) {
     if (a > b) {
         return b;
     }
     return a;
 }
-console.log(min(5,6));
+
+console.log(min(5, 6));
 
 // let min = (a,b) => a > b ? b : a;
 
 
-function max(a,y) {
+function max(a, y) {
     if (a > y) {
         return a;
     }
     return y;
 }
-console.log(max(5,6))
+
+console.log(max(5, 6))
 
 // let max = (a,y) => a > y ? a : y;
 
 
-const array = Array.from({length:10}, () => Math.floor(Math.random() * 100));
+const array = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
 for (let i = 0; i < array.length; i++) {
     if (array[i] % 10 === 0) {
         array[i] = array[i].toString();
-        array[i] = array[i].replaceAll('0','zero');
+        array[i] = array[i].replaceAll('0', 'zero');
     }
 }
 console.log(array)
@@ -120,19 +123,18 @@ function changeColor(event) {
 
 }
 
-text1.addEventListener('click', () => {
+text1.addEventListener('click', (event) => {
     changeColor(event)
 
 })
-text2.addEventListener('click', () => {
+text2.addEventListener('click', (event) => {
     changeColor(event)
 
 })
-text3.addEventListener('click', () => {
+text3.addEventListener('click', (event) => {
     changeColor(event)
 
 })
-
 
 
 // Homework lesson-5
@@ -184,10 +186,24 @@ const data = [
     },
 ];
 
-const re = prompt('Enter a name: ');
-for (i in data) {
-    const result = data[i].country + ' ,' + data[i].city + ' ,' + data[i].hotel;
-    if (result.includes(re)) {
-        console.log(result);
+const input = document.getElementById('inputValue');
+const button = document.getElementById('buttonSearch');
+const resultHTML = document.getElementById('result');
+
+button.addEventListener('click', () => {
+    resultHTML.textContent = '';
+    let number = 0;
+    for (let value of data) {
+
+        const result = value.country + ' ,' + value.city + ' ,' + value.hotel;
+        if (result.includes(input.value)) {
+            number++;
+            resultHTML.textContent += number + ') ' + result + ' ';
+        }
     }
-}
+    if (resultHTML.textContent === '') {
+        resultHTML.textContent = 'No results';
+    }
+})
+
+
