@@ -1,3 +1,5 @@
+// Homework lesson-2
+
 let user = 'John Doe';
 console.log(user);
 let student = 'Ihar';
@@ -45,7 +47,7 @@ for (i = 0; i < array3.length; i++) {
     }
 }
 
-// Homework lesson-3
+//  Homework lesson-3
 
 function palindrome(str) {
     let result = '';
@@ -65,7 +67,7 @@ function min(a,b) {
 }
 console.log(min(5,6));
 
-let min = (a,b) => a > b ? b : a;
+// let min = (a,b) => a > b ? b : a;
 
 
 function max(a,y) {
@@ -76,7 +78,7 @@ function max(a,y) {
 }
 console.log(max(5,6))
 
-let max = (a,y) => a > y ? a : y;
+// let max = (a,y) => a > y ? a : y;
 
 
 const array = Array.from({length:10}, () => Math.floor(Math.random() * 100));
@@ -87,3 +89,49 @@ for (let i = 0; i < array.length; i++) {
     }
 }
 console.log(array)
+
+// Homework lesson-4
+
+const getSum = (arg1) => {
+    return (arg2) => {
+        return arg1 + arg2;
+    }
+}
+console.log(getSum(5)(2));
+
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+function changeColor(event) {
+    if (!event.target.style.background) {
+        event.target.style.background = colors[0];
+        return;
+
+    }
+    let colorIndex = colors.indexOf(event.target.style.background);
+    if (colorIndex === -1) {
+        console.log('Current color is not found in array');
+        console.log('Current color is: ', event.target.style.background);
+        return;
+    }
+    event.target.style.background = colors[++colorIndex];
+
+}
+
+text1.addEventListener('click', () => {
+    changeColor(event)
+
+})
+text2.addEventListener('click', () => {
+    changeColor(event)
+
+})
+text3.addEventListener('click', () => {
+    changeColor(event)
+
+})
+
+
+
