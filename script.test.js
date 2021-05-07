@@ -4,7 +4,6 @@ const getSum = (arg1) => {
     }
 }
 
-
 test('Calculating two positive numbers', () => {
     expect(getSum(2)(5)).toBe(7);
 })
@@ -28,7 +27,5 @@ test('Calculating undefined arguments', () => {
 test('Calculating null and null', () => {
     expect(getSum(null)(null)).toBeNull;
 })
-
-
 
 
