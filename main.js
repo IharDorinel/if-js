@@ -86,4 +86,4 @@ for (let i = 0; i < array.length; i++) {
         array[i] = array[i].replaceAll('0','zero');
     }
 }
-console.log(array)
+console.log(array) 
