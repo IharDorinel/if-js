@@ -478,3 +478,83 @@ function deepEqual (obj1, obj2) {
 }
 
 console.log(deepEqual(obj1, obj2))
+
+// Homework lesson-8
+
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+class Student extends User {
+    constructor(firstName, lastName, admissionYear, courseName) {
+        super(firstName, lastName);
+        this.admissionYear = admissionYear;
+        this.courseName = courseName;
+    }
+    course() {
+        return 2021 - `${this.admissionYear}`;
+    }
+}
+
+const studentsData = [
+
+    {
+        firstName: 'Василий',
+        lastName: 'Петров',
+        admissionYear: 2019,
+        courseName: 'Java',
+    },
+    {
+        firstName: 'Иван',
+        lastName: 'Иванов',
+        admissionYear: 2018,
+        courseName: 'JavaScript',
+    },
+    {
+        firstName: 'Александр',
+        lastName: 'Федоров',
+        admissionYear: 2017,
+        courseName: 'Python',
+    },
+    {
+        firstName: 'Николай',
+        lastName: 'Петров',
+        admissionYear: 2019,
+        courseName: 'Android',
+    }
+]
+
+for (let i of studentsData) {
+
+    const students = new Student(studentsData[i]);}
+
+
+class Students {
+    constructor(students) {
+        this.students = students;
+    }
+
+    fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    course() {
+        return 2021 - this.admissionYear;
+    }
+
+    getInfo() {
+        let sorted = this.students.sort(function (a, b) {
+            return b.admissionYear - a.admissionYear
+        });
+        return sorted.map(function (a) {
+            return `${a.fullName} - ${a.courseName}, ${a.course} курс`;
+        })
+    }
+}
+    console.log(students.getInfo());
