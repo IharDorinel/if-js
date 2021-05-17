@@ -200,9 +200,9 @@ button.addEventListener('click', () => {
             number++;
             resultHTML.textContent += number + ') ' + result + ' ';
         }
+    }
        if (resultHTML.textContent === '') {
         resultHTML.textContent = 'No results';
-    }
     }
     })
 
