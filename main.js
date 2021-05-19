@@ -481,27 +481,6 @@ console.log(deepEqual(obj1, obj2))
 
 // Homework lesson-8
 
-class User {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    fullName() {
-        return `${this.firstName} ${this.lastName}`
-    }
-}
-
-class Student extends User {
-    constructor(firstName, lastName, admissionYear, courseName) {
-        super(firstName, lastName);
-        this.admissionYear = admissionYear;
-        this.courseName = courseName;
-    }
-    course() {
-        return 2021 - `${this.admissionYear}`;
-    }
-}
-
 const studentsData = [
 
     {
@@ -530,31 +509,56 @@ const studentsData = [
     }
 ]
 
-for (let i of studentsData) {
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
 
-    const students = new Student(studentsData[i]);}
+class Student extends User {
+    constructor(firstName, lastName, admissionYear, courseName) {
+        super(firstName, lastName);
+        this.admissionYear = admissionYear;
+        this.courseName = courseName;
+    }
+    get course() {
+        return 2021 - `${this.admissionYear}`;
+    }
+}
 
+class Student1 {
+    constructor(firstName, lastName, admissionYear, courseName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.admissionYear = admissionYear;
+        this.courseName = courseName;
+    }
+    get fullName1() {
+        return `${this.firstName} ${this.lastName}`
+    }
+    get course() {
+        return 2021 - `${this.admissionYear}`;
+    }
+}
+
+const data2 = studentsData.map((e) => new Student1(...Object.values(e)))
 
 class Students {
     constructor(students) {
         this.students = students;
     }
 
-    fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    course() {
-        return 2021 - this.admissionYear;
-    }
-
     getInfo() {
-        let sorted = this.students.sort(function (a, b) {
-            return b.admissionYear - a.admissionYear
-        });
-        return sorted.map(function (a) {
-            return `${a.fullName} - ${a.courseName}, ${a.course} курс`;
-        })
+        let sorted = this.students.sort((a, b) => a.course - b.course);
+        return sorted.map((a) => `${a.fullName1} - ${a.courseName}, ${a.course} курс`
+        );
     }
 }
-    console.log(students.getInfo());
+
+const students1 = new Students(data2)
+
+console.log(students1.getInfo());
