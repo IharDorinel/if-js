@@ -56,36 +56,39 @@ function palindrome(str) {
     }
     return str === result;
 }
+
 console.log(palindrome('шалаш'))
 
 
-function min(a,b) {
+function min(a, b) {
     if (a > b) {
         return b;
     }
     return a;
 }
-console.log(min(5,6));
 
-let min = (a,b) => a > b ? b : a;
+console.log(min(5, 6));
+
+// let min = (a,b) => a > b ? b : a;
 
 
-function max(a,y) {
+function max(a, y) {
     if (a > y) {
         return a;
     }
     return y;
 }
-console.log(max(5,6))
 
-let max = (a,y) => a > y ? a : y;
+console.log(max(5, 6))
+
+// let max = (a,y) => a > y ? a : y;
 
 
-const array = Array.from({length:10}, () => Math.floor(Math.random() * 100));
+const array = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
 for (let i = 0; i < array.length; i++) {
     if (array[i] % 10 === 0) {
         array[i] = array[i].toString();
-        array[i] = array[i].replaceAll('0','zero');
+        array[i] = array[i].replaceAll('0', 'zero');
     }
 }
 console.log(array)
@@ -94,8 +97,7 @@ console.log(array)
 
 const getSum = (arg1) => {
     return (arg2) => {
-        arg1 += arg2;
-        return arg1;
+        return arg1 + arg2;
     }
 }
 console.log(getSum(5)(2));
@@ -104,36 +106,36 @@ const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
-let color1 = 0;
-let color2 = 0;
-let color3 = 0;
 
+function changeColor(event) {
+    if (!event.target.style.background) {
+        event.target.style.background = colors[0];
+        return;
 
-text1.addEventListener('click', () => {
-    text1.style.background = colors[color1];
-    color1++;
-    if (color1 === colors.length) {
-        color1 = 0;
-        }
-})
-
-text2.addEventListener('click', () => {
-    text2.style.background = colors[color2];
-    color2++;
-    if (color2 === colors.length) {
-        color2 = 0;
     }
-})
-
-text3.addEventListener('click', () => {
-    text3.style.background = colors[color3];
-    color3++;
-    if (color3 === colors.length) {
-        color3 = 0;
+    let colorIndex = colors.indexOf(event.target.style.background);
+    if (colorIndex === -1) {
+        console.log('Current color is not found in array');
+        console.log('Current color is: ', event.target.style.background);
+        return;
     }
+    event.target.style.background = colors[++colorIndex];
+
+}
+
+text1.addEventListener('click', (event) => {
+    changeColor(event)
+
+})
+text2.addEventListener('click', (event) => {
+    changeColor(event)
+
+})
+text3.addEventListener('click', (event) => {
+    changeColor(event)
+
 })
 
-console.log(text1, text2, text3)
 
 // Homework lesson-5
 
@@ -184,13 +186,26 @@ const data = [
     },
 ];
 
-const re = prompt('Enter a name: ');
-for (i in data) {
-    const result = data[i].country + ' ,' + data[i].city + ' ,' + data[i].hotel;
-    if (result.includes(re)) {
-        console.log(result);
+const input = document.getElementById('inputValue');
+const button = document.getElementById('buttonSearch');
+const resultHTML = document.getElementById('result');
+
+button.addEventListener('click', () => {
+    resultHTML.textContent = '';
+    let number = 0;
+    for (let value of data) {
+
+        const result = value.country + ' ,' + value.city + ' ,' + value.hotel;
+        if (result.includes(input.value)) {
+            number++;
+            resultHTML.textContent += number + ') ' + result + ' ';
+        }
     }
-}
+  if (resultHTML.textContent === '') {
+        resultHTML.textContent = 'No results';
+    }
+})
+
 
 // Homework lesson-6
 
@@ -559,6 +574,9 @@ class Students {
     }
 }
 
-const students1 = new Students(data2)
+const students1 = new Students(data2);
 
 console.log(students1.getInfo());
+
+
+
