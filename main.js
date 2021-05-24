@@ -434,8 +434,56 @@ const countries = hotels.reduce((acc, item) => {
 }, {})
 console.log(countries)
 
-   
+
+// Homework lesson-7
+
+const obj1 = {
+    a: 'a',
+    b: {
+        a: 'a',
+        b: 'b',
+        c: {
+            a: 1,
+        },
+    },
+};
+const obj2 = {
+    b: {
+        c: {
+            a: 1,
+        },
+        b: 'b',
+        a: 'a',
+    },
+    a: 'a',
+};
+const obj3 = {
+    a: {
+        c: {
+            a: 'a',
+        },
+        b: 'b',
+        a: 'a',
+    },
+    b: 'b',
+};
 
 
+function deepEqual (obj1, obj2) {
+    if (obj1 === obj2)
+        return true;
+    if (obj1 === null || typeof obj1 !== 'object' || obj2 === null || typeof obj2 !== 'object')
+        return false;
+    let keysObj1 = Object.keys(obj1);
+    let keysObj2 = Object.keys(obj2);
+    if (keysObj1.length !== keysObj1.length)
+        return false;
+    for (let key of keysObj1) {
+        if (!keysObj2.includes(key) || !deepEqual(obj1[key], obj2[key]))
+            return false;
+    }
+    return true;
+}
 
+console.log(deepEqual(obj1, obj2))
 
