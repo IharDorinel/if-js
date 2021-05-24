@@ -484,7 +484,6 @@ function deepEqual (obj1, obj2) {
     }
     return true;
 }
-
 console.log(deepEqual(obj1, obj2))
 
 // Homework lesson-8
@@ -619,5 +618,4 @@ const changeColorIter3 = {
         }
     }
 }
-
 
