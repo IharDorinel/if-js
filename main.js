@@ -572,4 +572,3 @@ const students1 = new Students(data2);
 console.log(students1.getInfo());
 
 
-
