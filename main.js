@@ -201,16 +201,15 @@ button.addEventListener('click', () => {
             resultHTML.textContent += number + ') ' + result + ' ';
         }
     }
-  if (resultHTML.textContent === '') {
+       if (resultHTML.textContent === '') {
         resultHTML.textContent = 'No results';
     }
-})
-
+    })
 
 // Homework lesson-6
 
 function isPalindrome (str) {
-    str === str.toLowerCase();
+    str = str.toLowerCase();
     return str === str.split('').reverse().join('');
 };
 console.log(isPalindrome('Lol'))
@@ -259,13 +258,11 @@ const data = [
     },
 ];
 
-function search(items, searchVal) {
+const search = str =>
+    data.filter(obj => obj?.country?.includes(str) || obj?.city?.includes(str) ||
+        obj?.hotel?.includes(str)).map(obj => `${obj.country} ${obj.city} ${obj.hotel}`);
 
-    return items.filter(item =>
-        Object.values(item).toString().includes(searchVal)).map(({ country, city, hotel }) => `${[country, city, hotel].join(', ')}`).forEach(item => console.log(item));
-};
-
-console.log(search(data, "Berlin"))
+console.log(search('Ber'))
 
 const hotels = [
     {
@@ -425,22 +422,18 @@ const hotels = [
     },
 ]
 
-function countryCities () {
-    const countries = hotels.map(item => item.country);
-    const countriesFilter = countries.filter((item, index) => countries.indexOf(item) === index);
-    countriesFilter.forEach(function(value) {
-        let country = value;
-        let cities = [];
-        hotels.forEach(function(value) {
-            if (value.country === country) {
-                cities.push(value.city);
-            }
-        })
-        console.log(country + ': ' + cities.join(', '));
-    })
-};
+const countries = hotels.reduce((acc, item) => {
+    const result = { ...acc };
+    if (!result[item.country]) {
+        result[item.country] = [];
+    }
+    if (!result[item.country].includes(item.city)) {
+        result[item.country].push(item.city);
+    }
+    return result;
+}, {})
+console.log(countries)
 
-console.log(countryCities())
 
 // Homework lesson-7
 
