@@ -619,3 +619,199 @@ const changeColorIter3 = {
     }
 }
 
+// Homework lesson-10
+
+const data10 = [
+    {
+        name: 'Hotel Leopold',
+        city: 'Saint Petersburg',
+        country: 'Russia',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-leopold_mflelk.jpg',
+    },
+    {
+        name: 'Apartment Sunshine',
+        city: 'Santa  Cruz de Tenerife',
+        country: 'Spain',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/apartment-sunshine_vhdlel.jpg',
+    },
+    {
+        name: 'Villa Kunerad',
+        city: 'Vysokie Tatry',
+        country: 'Slowakia',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/villa-kunerad_gdbqgv.jpg',
+    },
+    {
+        name: 'Hostel Friendship',
+        city: 'Berlin',
+        country: 'Germany',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379364/fe/hostel-friendship_aw6tn7.jpg',
+    },
+    {
+        name: 'Radisson Blu Hotel',
+        city: 'Kyiv',
+        country: 'Ukraine',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/radisson-blu-hotel_jwtowg.jpg',
+    },
+    {
+        name: 'Paradise Hotel',
+        city: 'Guadalupe',
+        country: 'Mexico',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/paradise-hotel_i6whae.jpg',
+    },
+    {
+        name: 'Hotel Grindewald',
+        city: 'Interlaken',
+        country: 'Switzerland',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/hotel-grindewald_zsjsmy.jpg',
+    },
+    {
+        name: 'The Andaman Resort',
+        city: 'Port Dickson',
+        country: 'Malaysia',
+        imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
+    },
+];
+
+const dataMap1 = data10.map(obj => `${obj.city} ${obj.country}`)
+const dataMap2 = data10.map(obj => `${obj.name}`)
+const dataMap3 = data10.map(obj => `${obj.imageUrl}`)
+
+const section = document.createElement("section")
+section.style.cssText = `
+background-color: #EAF0F9`
+document.body.appendChild(section)
+
+const container = document.createElement("container")
+container.style.cssText = `
+padding-top: 120px`
+section.appendChild(container)
+
+const div = document.createElement("div")
+div.innerHTML = 'Homes guests loves'
+div.style.cssText = `
+font: 40px Roboto, sans-serif;
+color: black;
+    font-weight: 500;
+    line-height: 46px;
+    text-align: center;
+    margin-top: 0`
+container.appendChild(div)
+
+const gallery = document.createElement("gallery")
+gallery.style.cssText = `
+padding: 105px 105px 120px 105px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: relative`
+container.appendChild(gallery)
+
+const boxCSS = `
+display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    margin-right: 15px;`
+
+const divCSS = `
+font: 24px Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: 20px;
+    color: #3077C6`
+
+const divCSS1 = `
+font: 24px Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: 20px;
+    color: #BFBFBF`
+
+const imgCSS = `
+width: 100%;
+    height: 100%;
+    min-width: 300px;
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center`
+
+const box1 = document.createElement("box")
+box1.style.cssText = `${boxCSS}`
+gallery.appendChild(box1)
+
+const box2 = document.createElement("box")
+box2.style.cssText = `${boxCSS}`
+gallery.appendChild(box2)
+
+const box3 = document.createElement("box")
+box3.style.cssText = `${boxCSS}`
+gallery.appendChild(box3)
+
+const box4 = document.createElement("box")
+box4.style.cssText = `${boxCSS}`
+gallery.appendChild(box4)
+
+const img0 = document.createElement("img")
+src0 = dataMap3[0]
+img0.src = src0
+img0.style.cssText = `${imgCSS}`
+
+const div0 = document.createElement("div")
+div0.innerHTML = dataMap2[0]
+div0.style.cssText = `${divCSS}`
+
+const divA = document.createElement("div")
+divA.innerHTML = dataMap1[0]
+divA.style.cssText = `${divCSS1}`
+
+const img1 = document.createElement("img")
+src1 = dataMap3[1]
+img1.src = src1
+img1.style.cssText = `${imgCSS}`
+
+const div1 = document.createElement("div")
+div1.innerHTML = dataMap2[1]
+div1.style.cssText = `${divCSS}`
+
+const divB = document.createElement("div")
+divB.innerHTML = dataMap1[1]
+divB.style.cssText = `${divCSS1}`
+
+const img2 = document.createElement("img")
+src2 = dataMap3[2]
+img2.src = src2
+img2.style.cssText = `${imgCSS}`
+
+const div2 = document.createElement("div")
+div2.innerHTML = dataMap2[2]
+div2.style.cssText = `${divCSS}`
+
+const divC = document.createElement("div")
+divC.innerHTML = dataMap1[2]
+divC.style.cssText = `${divCSS1}`
+
+const img3 = document.createElement("img")
+src3 = dataMap3[3]
+img3.src = src3
+img3.style.cssText = `${imgCSS}`
+
+const div3 = document.createElement("div")
+div3.innerHTML = dataMap2[3]
+div3.style.cssText = `${divCSS}`
+
+const divD = document.createElement("div")
+divD.innerHTML = dataMap1[3]
+divD.style.cssText = `${divCSS1}`
+
+box1.appendChild(img0)
+box1.appendChild(div0)
+box1.appendChild(divA)
+box2.appendChild(img1)
+box2.appendChild(div1)
+box2.appendChild(divB)
+box3.appendChild(img2)
+box3.appendChild(div2)
+box3.appendChild(divC)
+box4.appendChild(img3)
+box4.appendChild(div3)
+box4.appendChild(divD)
