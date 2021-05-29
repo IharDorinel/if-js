@@ -568,54 +568,32 @@ class Students {
 
 // Homework lesson-9
 
-const changeColorIter1 = {
-    [Symbol.iterator]: () => {
-        return {
-            next: () => {
-                let color = 0;
-                text1.addEventListener('click', () => {
-                    text1.style.background = colors[color];
-                    color++;
-                    if (color === colors.length) {
-                        color = 0;
-                    }
-                })
+const iterColor = () => {
+    return {
+        data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+        i: 0,
+        [Symbol.iterator] () {
+            return this;
+        },
+        next() {
+            if (this.i >= this.data.length) {
+                this.i = 0;
+            }
+            return {
+                done: false,
+                value: this.data[this.i++]
             }
         }
+
     }
 }
 
-const changeColorIter2 = {
-    [Symbol.iterator]: () => {
-        return {
-            next: () => {
-                let color = 0;
-                text2.addEventListener('click', () => {
-                    text2.style.background = colors[color];
-                    color++;
-                    if (color === colors.length) {
-                        color = 0;
-                    }
-                })
-            }
-        }
+const colorIterators = {};
+function onClick(el) {
+    const id = el.id;
+    if (colorIterators[id] === undefined) {
+        colorIterators[id] = iterColor()
     }
-}
-
-const changeColorIter3 = {
-    [Symbol.iterator]: () => {
-        return {
-            next: () => {
-                let color = 0;
-                text3.addEventListener('click', () => {
-                    text3.style.background = colors[color];
-                    color++;
-                    if (color === colors.length) {
-                        color = 0;
-                    }
-                })
-            }
-        }
-    }
+    el.style.backgroundColor = colorIterators[id].next().value
 }
 
