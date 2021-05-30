@@ -206,6 +206,7 @@ button.addEventListener('click', () => {
     }
     })
 
+
 // Homework lesson-6
 
 function isPalindrome (str) {
@@ -214,49 +215,6 @@ function isPalindrome (str) {
 };
 console.log(isPalindrome('Lol'))
 
-
-const data = [
-    {
-        country: 'Russia',
-        city: 'Saint Petersburg',
-        hotel: 'Hotel Leopold',
-    },
-    {
-        country: 'Spain',
-        city: 'Santa Cruz de Tenerife',
-        hotel: 'Apartment Sunshine',
-    },
-    {
-        country: 'Slowakia',
-        city: 'Vysokie Tatry',
-        hotel: 'Villa Kunerad',
-    },
-    {
-        country: 'Germany',
-        city: 'Berlin',
-        hotel: 'Hostel Friendship',
-    },
-    {
-        country: 'Indonesia',
-        city: 'Bali',
-        hotel: 'Ubud Bali Resort&SPA',
-    },
-    {
-        country: 'Netherlands',
-        city: 'Rotterdam',
-        hotel: 'King Kong Hostel',
-    },
-    {
-        country: 'Marocco',
-        city: 'Ourika',
-        hotel: 'Rokoko Hotel',
-    },
-    {
-        country: 'Germany',
-        city: 'Berlin',
-        hotel: 'Hotel Rehberge Berlin Mitte',
-    },
-];
 
 const search = str =>
     data.filter(obj => obj?.country?.includes(str) || obj?.city?.includes(str) ||
@@ -468,7 +426,6 @@ const obj3 = {
     b: 'b',
 };
 
-
 function deepEqual (obj1, obj2) {
     if (obj1 === obj2)
         return true;
@@ -476,7 +433,7 @@ function deepEqual (obj1, obj2) {
         return false;
     let keysObj1 = Object.keys(obj1);
     let keysObj2 = Object.keys(obj2);
-    if (keysObj1.length !== keysObj1.length)
+    if (keysObj1.length !== keysObj2.length)
         return false;
     for (let key of keysObj1) {
         if (!keysObj2.includes(key) || !deepEqual(obj1[key], obj2[key]))
@@ -486,85 +443,77 @@ function deepEqual (obj1, obj2) {
 }
 console.log(deepEqual(obj1, obj2))
 
+
 // Homework lesson-8
+
+const currentYear = new Date().getFullYear()
+
+const studentsData = [
+    {
+        firstName: "Василий",
+        lastName: "Петров",
+        admissionYear: 2019,
+        courseName: "Java"
+    },
+    {
+        firstName: "Иван",
+        lastName: "Иванов",
+        admissionYear: 2018,
+        courseName: "JavaScript"
+    },
+    {
+        firstName: "Александр",
+        lastName: "Федоров",
+        admissionYear: 2017,
+        courseName: "Python"
+    },
+    {
+        firstName: "Николай",
+        lastName: "Петров",
+        admissionYear: 2019,
+        courseName: "Android"
+    }
+];
 
 class User {
     constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    fullName() {
-        return `${this.firstName} ${this.lastName}`
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
     }
 }
 
 class Student extends User {
-    constructor(firstName, lastName, admissionYear, courseName) {
-        super(firstName, lastName);
+    constructor(firstName, lastname, admissionYear, courseName) {
+        super(firstName, lastname);
         this.admissionYear = admissionYear;
         this.courseName = courseName;
     }
-    course() {
-        return 2021 - `${this.admissionYear}`;
+
+    get course() {
+        return currentYear - this.admissionYear;
     }
 }
 
-const studentsData = [
-
-    {
-        firstName: 'Василий',
-        lastName: 'Петров',
-        admissionYear: 2019,
-        courseName: 'Java',
-    },
-    {
-        firstName: 'Иван',
-        lastName: 'Иванов',
-        admissionYear: 2018,
-        courseName: 'JavaScript',
-    },
-    {
-        firstName: 'Александр',
-        lastName: 'Федоров',
-        admissionYear: 2017,
-        courseName: 'Python',
-    },
-    {
-        firstName: 'Николай',
-        lastName: 'Петров',
-        admissionYear: 2019,
-        courseName: 'Android',
-    }
-]
-
-for (let i of studentsData) {
-
-    const students = new Student(studentsData[i]);}
-
+const data2 = studentsData.map((e) => new Student(...Object.values(e)));
 
 class Students {
     constructor(students) {
         this.students = students;
     }
 
-    fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    course() {
-        return 2021 - this.admissionYear;
-    }
-
     getInfo() {
-        let sorted = this.students.sort(function (a, b) {
-            return b.admissionYear - a.admissionYear
-        });
-        return sorted.map(function (a) {
-            return `${a.fullName} - ${a.courseName}, ${a.course} курс`;
-        })
+        const sorted = this.students.sort((a, b) => a.course - b.course);
+        return sorted.map((a) => `${a.fullName} - ${a.courseName}, ${a.course} курс`);
     }
 }
-    console.log(students.getInfo());
+const students1 = new Students(data2);
+
+console.log(students1.getInfo());
+
 
 // Homework lesson-9
 
@@ -596,4 +545,8 @@ function onClick(el) {
     }
     el.style.backgroundColor = colorIterators[id].next().value
 }
+
+
+
+
 
