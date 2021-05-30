@@ -215,49 +215,6 @@ function isPalindrome (str) {
 console.log(isPalindrome('Lol'))
 
 
-const data = [
-    {
-        country: 'Russia',
-        city: 'Saint Petersburg',
-        hotel: 'Hotel Leopold',
-    },
-    {
-        country: 'Spain',
-        city: 'Santa Cruz de Tenerife',
-        hotel: 'Apartment Sunshine',
-    },
-    {
-        country: 'Slowakia',
-        city: 'Vysokie Tatry',
-        hotel: 'Villa Kunerad',
-    },
-    {
-        country: 'Germany',
-        city: 'Berlin',
-        hotel: 'Hostel Friendship',
-    },
-    {
-        country: 'Indonesia',
-        city: 'Bali',
-        hotel: 'Ubud Bali Resort&SPA',
-    },
-    {
-        country: 'Netherlands',
-        city: 'Rotterdam',
-        hotel: 'King Kong Hostel',
-    },
-    {
-        country: 'Marocco',
-        city: 'Ourika',
-        hotel: 'Rokoko Hotel',
-    },
-    {
-        country: 'Germany',
-        city: 'Berlin',
-        hotel: 'Hotel Rehberge Berlin Mitte',
-    },
-];
-
 const search = str =>
     data.filter(obj => obj?.country?.includes(str) || obj?.city?.includes(str) ||
         obj?.hotel?.includes(str)).map(obj => `${obj.country} ${obj.city} ${obj.hotel}`);
@@ -434,7 +391,6 @@ const countries = hotels.reduce((acc, item) => {
 }, {})
 console.log(countries)
 
-
 // Homework lesson-7
 
 const obj1 = {
@@ -468,7 +424,6 @@ const obj3 = {
     b: 'b',
 };
 
-
 function deepEqual (obj1, obj2) {
     if (obj1 === obj2)
         return true;
@@ -476,7 +431,7 @@ function deepEqual (obj1, obj2) {
         return false;
     let keysObj1 = Object.keys(obj1);
     let keysObj2 = Object.keys(obj2);
-    if (keysObj1.length !== keysObj1.length)
+    if (keysObj1.length !== keysObj2.length)
         return false;
     for (let key of keysObj1) {
         if (!keysObj2.includes(key) || !deepEqual(obj1[key], obj2[key]))
@@ -486,4 +441,75 @@ function deepEqual (obj1, obj2) {
 }
 
 console.log(deepEqual(obj1, obj2))
+
+// Homework lesson-8
+
+const currentYear = new Date().getFullYear()
+
+const studentsData = [
+    {
+        firstName: "Василий",
+        lastName: "Петров",
+        admissionYear: 2019,
+        courseName: "Java"
+    },
+    {
+        firstName: "Иван",
+        lastName: "Иванов",
+        admissionYear: 2018,
+        courseName: "JavaScript"
+    },
+    {
+        firstName: "Александр",
+        lastName: "Федоров",
+        admissionYear: 2017,
+        courseName: "Python"
+    },
+    {
+        firstName: "Николай",
+        lastName: "Петров",
+        admissionYear: 2019,
+        courseName: "Android"
+    }
+];
+
+class User {
+    constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+class Student extends User {
+    constructor(firstName, lastname, admissionYear, courseName) {
+        super(firstName, lastname);
+        this.admissionYear = admissionYear;
+        this.courseName = courseName;
+    }
+
+    get course() {
+        return currentYear - this.admissionYear;
+    }
+}
+
+const data2 = studentsData.map((e) => new Student(...Object.values(e)));
+
+class Students {
+    constructor(students) {
+        this.students = students;
+    }
+
+    getInfo() {
+        const sorted = this.students.sort((a, b) => a.course - b.course);
+        return sorted.map((a) => `${a.fullName} - ${a.courseName}, ${a.course} курс`);
+    }
+}
+const students1 = new Students(data2);
+
+console.log(students1.getInfo());
+
 
