@@ -206,6 +206,7 @@ button.addEventListener('click', () => {
     }
     })
 
+
 // Homework lesson-6
 
 function isPalindrome (str) {
@@ -391,6 +392,7 @@ const countries = hotels.reduce((acc, item) => {
 }, {})
 console.log(countries)
 
+
 // Homework lesson-7
 
 const obj1 = {
@@ -439,8 +441,8 @@ function deepEqual (obj1, obj2) {
     }
     return true;
 }
-
 console.log(deepEqual(obj1, obj2))
+
 
 // Homework lesson-8
 
@@ -511,5 +513,40 @@ class Students {
 const students1 = new Students(data2);
 
 console.log(students1.getInfo());
+
+
+// Homework lesson-9
+
+const iterColor = () => {
+    return {
+        data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+        i: 0,
+        [Symbol.iterator] () {
+            return this;
+        },
+        next() {
+            if (this.i >= this.data.length) {
+                this.i = 0;
+            }
+            return {
+                done: false,
+                value: this.data[this.i++]
+            }
+        }
+
+    }
+}
+
+const colorIterators = {};
+function onClick(el) {
+    const id = el.id;
+    if (colorIterators[id] === undefined) {
+        colorIterators[id] = iterColor()
+    }
+    el.style.backgroundColor = colorIterators[id].next().value
+}
+
+
+
 
 
