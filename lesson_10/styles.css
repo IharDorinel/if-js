@@ -40,10 +40,6 @@ a {
     justify-content: flex-start;
 }
 
-/*.home-guests-box:not(:nth-of-type(1), :nth-of-type(2), :nth-of-type(3), :nth-of-type(4), :nth-of-type(5)) {*/
-/*    display: none;*/
-/*}*/
-
 .photo {
     width: 100%;
     height: 100%;
@@ -71,18 +67,29 @@ a {
     visibility: hidden;
 }
 
-.home-switcher {
+.home-switcher-left {
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: space-between;
     position: absolute;
     right: 50px;
-    left: -20px;
+    left: -7px;
+    top: 32%;
+    transform: rotate(
+            180deg
+    );
+}
+
+.home-switcher-right {
+    width: 2400px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    right: -21px;
+    left: 57px;
     top: 33%;
 }
 
-.home-switcher-left {
-    transform: rotate(180deg);
-    /*visibility: hidden;*/
-}
+
