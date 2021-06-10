@@ -1,9 +1,6 @@
 const homeGuestContentDiv = document.querySelector('#home-guest-content');
 
-if (sessionStorage.getItem('homes-data')) {
-    const data = JSON.parse(sessionStorage.getItem('homes-data'));
-    console.log(data);
-} else {
+if (!sessionStorage.getItem('homes-data')) {
     fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
         .then(response => response.json())
         .then(data => data.forEach((elem) => {
@@ -18,6 +15,10 @@ if (sessionStorage.getItem('homes-data')) {
     `;
         }))
         .then(data => console.log(data))
-        .then(data => sessionStorage.setItem('homes-data', JSON.stringify(data))
+        .then(data => sessionStorage.setItem('homes-data', JSON.stringify(data)))
             .catch(err => console.log('This is error', err));
+} else {
+    const data = JSON.parse(sessionStorage.getItem('homes-data'));
+    console.log(data);
 }
+
