@@ -7,9 +7,8 @@ formEl.addEventListener('submit', async event => {
     const formData = new FormData(formEl);
     const response = await fetch('https://fe-student-api.herokuapp.com/api/file', {
         method: 'POST',
-        // mode: 'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: formData,
     })
