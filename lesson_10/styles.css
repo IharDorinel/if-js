@@ -17,6 +17,8 @@ a {
 
 .homes-guests-container {
     padding: 120px 25px 120px;
+    width: 1260px;
+    margin: auto;
 }
 
 .home-guests-gallery, .best-destinations-gallery, .gallery {
