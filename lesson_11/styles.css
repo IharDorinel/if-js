@@ -361,6 +361,14 @@ input {
     line-height: 14px;
 }
 
+.filter-hidden, .filter--hidden {
+    display: none;
+}
+
+.filter-unhidden {
+    display: flex;
+}
+
 
 
 /*mobile*/
