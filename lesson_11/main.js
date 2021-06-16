@@ -1,3 +1,4 @@
+
 const filterForm = document.createElement('form');
 const selectForm = document.createElement('select');
 const optionForm0 = document.createElement('option');
@@ -61,14 +62,22 @@ selectForm.append(optionForm0, optionForm1, optionForm2, optionForm3, optionForm
     optionForm9, optionForm10, optionForm11, optionForm12, optionForm13, optionForm14, optionForm15, optionForm16, optionForm17);
 
 
-
-let counterAdults = 0;
+let counterAdults = 1;
 let counterChildren = 0;
-let counterRooms = 0;
+let counterRooms = 1;
+
 const filterQuestEl = document.querySelector('.filter-hidden');
 const filterQuestEl2 = document.querySelector('.filter--hidden');
 
+
 const changeElPlusAdults = document.querySelector('#changePlusAdults');
+const changeElMinusAdults = document.querySelector('#changeMinusAdults');
+const changeDisabledMinusAdultEl = document.querySelector('#changeDisabledMinusAdults');
+const changeDisabledElPlusAdults = document.querySelector('#changeDisabledPlusAdults');
+const changeDisabledMinusRoomEl = document.querySelector('#changeDisabledMinusRooms');
+const changeDisabledElPlusRooms = document.querySelector('#changeDisabledPlusRooms');
+const changeDisabledMinusChildrenEl = document.querySelector('#changeDisabledMinusChildren');
+const changeDisabledPlusChildrenEl = document.querySelector('#changeDisabledPlusChildren');
 
 const PlusAdults = event => {
 
@@ -76,19 +85,31 @@ const PlusAdults = event => {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults++;
         numberEl.innerHTML = counterAdults;
-    }
+        changeElMinusAdults.classList.remove('filter-disabled');
+        changeDisabledMinusAdultEl.classList.remove('change-disabled');
+    };
+    if(counterAdults >= 30) {
+        changeElPlusAdults.classList.add('filter-disabled');
+        changeDisabledElPlusAdults.classList.add('change-disabled');
+    };
 };
 
 changeElPlusAdults.addEventListener('click', PlusAdults);
 
-const changeElMinusAdults = document.querySelector('#changeMinusAdults');
+
 
 const MinusAdults = event => {
 
-    if(counterAdults > 0) {
+    if(counterAdults > 1) {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults--;
         numberEl.innerHTML = counterAdults;
+        changeElPlusAdults.classList.remove('filter-disabled');
+        changeDisabledElPlusAdults.classList.remove('change-disabled');
+    };
+    if(counterAdults <= 1) {
+        changeElMinusAdults.classList.add('filter-disabled');
+        changeDisabledMinusAdultEl.classList.add('change-disabled');
     }
 };
 
@@ -96,6 +117,7 @@ changeElMinusAdults.addEventListener('click', MinusAdults);
 
 
 const changeElPlusChildren = document.querySelector('#changePlusChildren');
+const changeElMinusChildren = document.querySelector('#changeMinusChildren');
 
 const PlusAdultsChildren = event => {
     if(counterChildren !== -1) {
@@ -106,13 +128,16 @@ const PlusAdultsChildren = event => {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren++;
         numberEl.innerHTML = counterChildren;
-        filterForm++;
-    }
+        changeElMinusChildren.classList.remove('filter-disabled');
+        changeDisabledMinusChildrenEl.classList.remove('change-disabled');
+    };
+    if(counterChildren >= 10) {
+        changeElPlusChildren.classList.add('filter-disabled');
+        changeDisabledPlusChildrenEl.classList.add('change-disabled');
+    };
 };
 
 changeElPlusChildren.addEventListener('click', PlusAdultsChildren);
-
-const changeElMinusChildren = document.querySelector('#changeMinusChildren');
 
 const MinusChildren = event => {
     if(counterChildren === 1) {
@@ -123,6 +148,12 @@ const MinusChildren = event => {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren--;
         numberEl.innerHTML = counterChildren;
+        changeElPlusChildren.classList.remove('filter-disabled');
+        changeDisabledPlusChildrenEl.classList.remove('change-disabled');
+    };
+    if(counterChildren <= 0) {
+        changeElMinusChildren.classList.add('filter-disabled');
+        changeDisabledMinusChildrenEl.classList.add('change-disabled');
     }
 };
 
@@ -130,6 +161,8 @@ changeElMinusChildren.addEventListener('click', MinusChildren);
 
 
 const changeElPlusRooms = document.querySelector('#changePlusRooms');
+const changeElMinusRooms = document.querySelector('#changeMinusRooms');
+
 
 const PlusRooms = event => {
 
@@ -137,20 +170,130 @@ const PlusRooms = event => {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms++;
         numberEl.innerHTML = counterRooms;
-    }
+        changeElMinusRooms.classList.remove('filter-disabled');
+        changeDisabledMinusRoomEl.classList.remove('change-disabled');
+    };
+    if(counterRooms >= 30) {
+        changeElPlusRooms.classList.add('filter-disabled');
+        changeDisabledElPlusRooms.classList.add('change-disabled');
+    };
 };
 
 changeElPlusRooms.addEventListener('click', PlusRooms);
 
-const changeElMinusRooms = document.querySelector('#changeMinusRooms');
+
 
 const MinusRooms = event => {
 
-    if(counterRooms > 0) {
+    if(counterRooms > 1) {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms--;
         numberEl.innerHTML = counterRooms;
+        changeElPlusRooms.classList.remove('filter-disabled');
+        changeDisabledElPlusRooms.classList.remove('change-disabled');
+    };
+    if(counterRooms <= 1) {
+        changeElMinusRooms.classList.add('filter-disabled');
+        changeDisabledMinusRoomEl.classList.add('change-disabled');
+
     }
 };
 
 changeElMinusRooms.addEventListener('click', MinusRooms);
+
+
+// const changeElPlusAdults = document.querySelector('#changePlusAdults');
+//
+// const PlusAdults = event => {
+//
+//     if(counterAdults < 30) {
+//         const numberEl = document.querySelector('#numberAdults');
+//         counterAdults++;
+//         numberEl.innerHTML = counterAdults;
+//         // changeDisabledAdultEl.classList.remove('change-disabled');
+//         // .classList.remove('filter-disabled');
+//     }
+// };
+//
+// changeElPlusAdults.addEventListener('click', PlusAdults);
+//
+// const changeElMinusAdults = document.querySelector('#changeMinusAdults');
+//
+// const MinusAdults = event => {
+//
+//     if(counterAdults > 1) {
+//         const numberEl = document.querySelector('#numberAdults');
+//         counterAdults--;
+//         numberEl.innerHTML = counterAdults;
+//     // } else
+//     // {
+//     //     changeDisabledAdultEl.classList.add('change-disabled');
+//     //     .classList.add('filter-disabled');
+//     // }
+// };
+//
+// changeElMinusAdults.addEventListener('click', MinusAdults);
+//
+//
+// const changeElPlusChildren = document.querySelector('#changePlusChildren');
+//
+// const PlusAdultsChildren = event => {
+//     if(counterChildren !== -1 && counterChildren < 10) {
+//         filterQuestEl.classList.remove('filter-hidden');
+//         filterQuestEl2.classList.remove('filter--hidden');
+//         const numberEl = document.querySelector('#numberChildren');
+//         counterChildren++;
+//         numberEl.innerHTML = counterChildren;
+//     };
+// };
+//
+// changeElPlusChildren.addEventListener('click', PlusAdultsChildren);
+//
+// const changeElMinusChildren = document.querySelector('#changeMinusChildren');
+//
+// const MinusChildren = event => {
+//     if(counterChildren === 1) {
+//         filterQuestEl.classList.add('filter-hidden');
+//         filterQuestEl2.classList.add('filter--hidden');
+//     };
+//     if(counterChildren > 0) {
+//         const numberEl = document.querySelector('#numberChildren');
+//         counterChildren--;
+//         numberEl.innerHTML = counterChildren;
+//     }
+// };
+//
+// changeElMinusChildren.addEventListener('click', MinusChildren);
+//
+//
+// const changeElPlusRooms = document.querySelector('#changePlusRooms');
+//
+// const PlusRooms = event => {
+//
+//     if(counterRooms < 30) {
+//         const numberEl = document.querySelector('#numberRooms');
+//         counterRooms++;
+//         numberEl.innerHTML = counterRooms;
+//         // changeDisabledRoomEl.classList.remove('change-disabled');
+//         // filterDisabledRoomEl.classList.remove('filter-disabled');
+//     }
+// };
+//
+// changeElPlusRooms.addEventListener('click', PlusRooms);
+//
+// const changeElMinusRooms = document.querySelector('#changeMinusRooms');
+//
+// const MinusRooms = event => {
+//
+//     if(counterRooms > 1) {
+//         const numberEl = document.querySelector('#numberRooms');
+//         counterRooms--;
+//         numberEl.innerHTML = counterRooms;
+//     // } else
+//     // {
+//     //     changeDisabledRoomEl.classList.add('change-disabled');
+//     //     filterDisabledRoomEl.classList.add('filter-disabled');
+//     // }
+// };
+//
+// changeElMinusRooms.addEventListener('click', MinusRooms);

@@ -327,12 +327,20 @@ input {
     justify-content: center;
 }
 
+.filter-disabled {
+    border: 1px solid #CECECE;
+}
+
 .change {
     font: 18px Roboto, sans-serif;
     font-weight: 400;
     line-height: 21px;
     color: var(--primary);
 
+}
+
+.change-disabled {
+    color: #CECECE;
 }
 
 .filter-related-quest {
