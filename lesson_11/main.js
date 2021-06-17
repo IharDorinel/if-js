@@ -1,4 +1,3 @@
-
 const filterForm = document.createElement('form');
 const selectForm = document.createElement('select');
 const optionForm0 = document.createElement('option');
@@ -55,6 +54,7 @@ optionForm16.appendChild(optionForm16Text);
 const optionForm17 = document.createElement('option');
 const optionForm17Text = document.createTextNode('17 years old');
 optionForm17.appendChild(optionForm17Text);
+
 const filterAge = document.querySelector('.filter-age');
 filterAge.appendChild(filterForm);
 filterForm.appendChild(selectForm);
@@ -66,8 +66,8 @@ let counterAdults = 1;
 let counterChildren = 0;
 let counterRooms = 1;
 
-const filterQuestEl = document.querySelector('.filter-hidden');
-const filterQuestEl2 = document.querySelector('.filter--hidden');
+const filterQuestEl = document.querySelector('.filter-related-quest');
+const filterQuestEl2 = document.querySelector('.filter-age');
 
 
 const changeElPlusAdults = document.querySelector('#changePlusAdults');
@@ -79,12 +79,25 @@ const changeDisabledElPlusRooms = document.querySelector('#changeDisabledPlusRoo
 const changeDisabledMinusChildrenEl = document.querySelector('#changeDisabledMinusChildren');
 const changeDisabledPlusChildrenEl = document.querySelector('#changeDisabledPlusChildren');
 
+
+const ChildrenEl = document.querySelector('#children');
+const RoomsEl = document.querySelector('#rooms');
+
+const RelatedEl = document.querySelector('.related__input');
+const FilterRelatedEl = document.querySelector('.filter-related');
+const ShowFilter = event => {
+    FilterRelatedEl.classList.remove('filter-hidden');
+};
+RelatedEl.addEventListener('click', ShowFilter);
+
 const PlusAdults = event => {
 
     if(counterAdults < 30) {
         const numberEl = document.querySelector('#numberAdults');
+        const AdultsEl = document.querySelector('#adults');
         counterAdults++;
         numberEl.innerHTML = counterAdults;
+        AdultsEl.innerHTML = counterAdults;
         changeElMinusAdults.classList.remove('filter-disabled');
         changeDisabledMinusAdultEl.classList.remove('change-disabled');
     };
@@ -95,8 +108,6 @@ const PlusAdults = event => {
 };
 
 changeElPlusAdults.addEventListener('click', PlusAdults);
-
-
 
 const MinusAdults = event => {
 
@@ -119,10 +130,11 @@ changeElMinusAdults.addEventListener('click', MinusAdults);
 const changeElPlusChildren = document.querySelector('#changePlusChildren');
 const changeElMinusChildren = document.querySelector('#changeMinusChildren');
 
-const PlusAdultsChildren = event => {
+const PlusChildren = event => {
     if(counterChildren !== -1) {
         filterQuestEl.classList.remove('filter-hidden');
         filterQuestEl2.classList.remove('filter--hidden');
+        FilterRelatedEl.classList.add('filter-related-newheight');
     };
     if(counterChildren < 10) {
         const numberEl = document.querySelector('#numberChildren');
@@ -137,7 +149,7 @@ const PlusAdultsChildren = event => {
     };
 };
 
-changeElPlusChildren.addEventListener('click', PlusAdultsChildren);
+changeElPlusChildren.addEventListener('click', PlusChildren);
 
 const MinusChildren = event => {
     if(counterChildren === 1) {
@@ -154,6 +166,8 @@ const MinusChildren = event => {
     if(counterChildren <= 0) {
         changeElMinusChildren.classList.add('filter-disabled');
         changeDisabledMinusChildrenEl.classList.add('change-disabled');
+        FilterRelatedEl.classList.remove('filter-hidden');
+        FilterRelatedEl.classList.remove('filter-related-newheight');
     }
 };
 
