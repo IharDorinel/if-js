@@ -1,67 +1,5 @@
-const filterForm = document.createElement('form');
-const selectForm = document.createElement('select');
-const optionForm0 = document.createElement('option');
-const optionForm0Text = document.createTextNode('0 years old');
-optionForm0.appendChild(optionForm0Text);
-const optionForm1 = document.createElement('option');
-const optionForm1Text = document.createTextNode('1 years old');
-optionForm1.appendChild(optionForm1Text);
-const optionForm2 = document.createElement('option');
-const optionForm2Text = document.createTextNode('2 years old');
-optionForm2.appendChild(optionForm2Text);
-const optionForm3 = document.createElement('option');
-const optionForm3Text = document.createTextNode('3 years old');
-optionForm3.appendChild(optionForm3Text);
-const optionForm4 = document.createElement('option');
-const optionForm4Text = document.createTextNode('4 years old');
-optionForm4.appendChild(optionForm4Text);
-const optionForm5 = document.createElement('option');
-const optionForm5Text = document.createTextNode('5 years old');
-optionForm5.appendChild(optionForm5Text);
-const optionForm6 = document.createElement('option');
-const optionForm6Text = document.createTextNode('6 years old');
-optionForm6.appendChild(optionForm6Text);
-const optionForm7 = document.createElement('option');
-const optionForm7Text = document.createTextNode('7 years old');
-optionForm7.appendChild(optionForm7Text);
-const optionForm8 = document.createElement('option');
-const optionForm8Text = document.createTextNode('8 years old');
-optionForm8.appendChild(optionForm8Text);
-const optionForm9 = document.createElement('option');
-const optionForm9Text = document.createTextNode('9 years old');
-optionForm9.appendChild(optionForm9Text);
-const optionForm10 = document.createElement('option');
-const optionForm10Text = document.createTextNode('10 years old');
-optionForm10.appendChild(optionForm10Text);
-const optionForm11 = document.createElement('option');
-const optionForm11Text = document.createTextNode('11 years old');
-optionForm11.appendChild(optionForm11Text);
-const optionForm12 = document.createElement('option');
-const optionForm12Text = document.createTextNode('12 years old');
-optionForm12.appendChild(optionForm12Text);
-const optionForm13 = document.createElement('option');
-const optionForm13Text = document.createTextNode('13 years old');
-optionForm13.appendChild(optionForm13Text);
-const optionForm14 = document.createElement('option');
-const optionForm14Text = document.createTextNode('14 years old');
-optionForm14.appendChild(optionForm14Text);
-const optionForm15 = document.createElement('option');
-const optionForm15Text = document.createTextNode('15 years old');
-optionForm15.appendChild(optionForm15Text);
-const optionForm16 = document.createElement('option');
-const optionForm16Text = document.createTextNode('16 years old');
-optionForm16.appendChild(optionForm16Text);
-const optionForm17 = document.createElement('option');
-const optionForm17Text = document.createTextNode('17 years old');
-optionForm17.appendChild(optionForm17Text);
 
 const filterAge = document.querySelector('.filter-age');
-filterAge.appendChild(filterForm);
-filterForm.appendChild(selectForm);
-selectForm.append(optionForm0, optionForm1, optionForm2, optionForm3, optionForm4, optionForm5, optionForm6, optionForm7, optionForm8,
-    optionForm9, optionForm10, optionForm11, optionForm12, optionForm13, optionForm14, optionForm15, optionForm16, optionForm17);
-
-
 let counterAdults = 1;
 let counterChildren = 0;
 let counterRooms = 1;
@@ -83,7 +21,7 @@ const changeDisabledPlusChildrenEl = document.querySelector('#changeDisabledPlus
 const ChildrenEl = document.querySelector('#children');
 const RoomsEl = document.querySelector('#rooms');
 
-const RelatedEl = document.querySelector('.related__input');
+const RelatedEl = document.querySelector('.related');
 const FilterRelatedEl = document.querySelector('.filter-related');
 const ShowFilter = event => {
     FilterRelatedEl.classList.remove('filter-hidden');
@@ -97,7 +35,7 @@ const PlusAdults = event => {
         const AdultsEl = document.querySelector('#adults');
         counterAdults++;
         numberEl.innerHTML = counterAdults;
-        AdultsEl.innerHTML = counterAdults;
+        AdultsEl.innerHTML = `${counterAdults} ${'Adults'}`;
         changeElMinusAdults.classList.remove('filter-disabled');
         changeDisabledMinusAdultEl.classList.remove('change-disabled');
     };
@@ -113,8 +51,10 @@ const MinusAdults = event => {
 
     if(counterAdults > 1) {
         const numberEl = document.querySelector('#numberAdults');
+        const AdultsEl = document.querySelector('#adults');
         counterAdults--;
         numberEl.innerHTML = counterAdults;
+        AdultsEl.innerHTML = `${counterAdults} ${'Adults'}`;
         changeElPlusAdults.classList.remove('filter-disabled');
         changeDisabledElPlusAdults.classList.remove('change-disabled');
     };
@@ -138,8 +78,10 @@ const PlusChildren = event => {
     };
     if(counterChildren < 10) {
         const numberEl = document.querySelector('#numberChildren');
+        const ChildrenEl = document.querySelector('#children');
         counterChildren++;
         numberEl.innerHTML = counterChildren;
+        ChildrenEl.innerHTML = `${' —'} ${counterChildren} ${'Children'}`;
         changeElMinusChildren.classList.remove('filter-disabled');
         changeDisabledMinusChildrenEl.classList.remove('change-disabled');
     };
@@ -158,8 +100,10 @@ const MinusChildren = event => {
     };
     if(counterChildren > 0) {
         const numberEl = document.querySelector('#numberChildren');
+        const ChildrenEl = document.querySelector('#children');
         counterChildren--;
         numberEl.innerHTML = counterChildren;
+        ChildrenEl.innerHTML = `${' —'} ${counterChildren} ${'Children'}`;
         changeElPlusChildren.classList.remove('filter-disabled');
         changeDisabledPlusChildrenEl.classList.remove('change-disabled');
     };
@@ -182,8 +126,10 @@ const PlusRooms = event => {
 
     if(counterRooms < 30) {
         const numberEl = document.querySelector('#numberRooms');
+        const RoomsEl = document.querySelector('#rooms');
         counterRooms++;
         numberEl.innerHTML = counterRooms;
+        RoomsEl.innerHTML = `${' —'} ${counterRooms} ${'Rooms'}`;
         changeElMinusRooms.classList.remove('filter-disabled');
         changeDisabledMinusRoomEl.classList.remove('change-disabled');
     };
@@ -195,14 +141,14 @@ const PlusRooms = event => {
 
 changeElPlusRooms.addEventListener('click', PlusRooms);
 
-
-
 const MinusRooms = event => {
 
     if(counterRooms > 1) {
         const numberEl = document.querySelector('#numberRooms');
+        const RoomsEl = document.querySelector('#rooms');
         counterRooms--;
         numberEl.innerHTML = counterRooms;
+        RoomsEl.innerHTML = `${' —'} ${counterRooms} ${'Rooms'}`;
         changeElPlusRooms.classList.remove('filter-disabled');
         changeDisabledElPlusRooms.classList.remove('change-disabled');
     };
@@ -214,5 +160,45 @@ const MinusRooms = event => {
 };
 
 changeElMinusRooms.addEventListener('click', MinusRooms);
+
+
+const addChildSelect = () => {
+    const oneChildSelect = document.createElement('select');
+    oneChildSelect.classList.add('select-child-age');
+    oneChildSelect.innerHTML = `
+<option value="0">0 years old</option>
+<option value="1">1 years old</option>
+<option value="2">2 years old</option>
+<option value="3">3 years old</option>
+<option value="4">4 years old</option>
+<option value="5">5 years old</option>
+<option value="6">6 years old</option>
+<option value="7">7 years old</option>
+<option value="8">8 years old</option>
+<option value="9">9 years old</option>
+<option value="10">10 years old</option>
+<option value="11">11 years old</option>
+<option value="12">12 years old</option>
+<option value="13">13 years old</option>
+<option value="14">14 years old</option>
+<option value="15">15 years old</option>
+<option value="16">16 years old</option>
+<option value="17">17 years old</option>`;
+
+    filterAge.insertAdjacentElement('beforeend', oneChildSelect);
+    if(counterChildren > 9) {
+        changeElPlusChildren.removeEventListener('click', addChildSelect);
+    };
+};
+changeElPlusChildren.addEventListener('click', addChildSelect);
+
+
+const removeChildSelect = () => {
+    let oneChildSelect = document.querySelectorAll('.select-child-age');
+    let oneChildSelectAll = oneChildSelect.length - 1;
+    oneChildSelect[oneChildSelectAll].remove();
+};
+changeElMinusChildren.addEventListener('click', removeChildSelect);
+
 
 

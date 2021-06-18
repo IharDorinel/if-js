@@ -229,6 +229,7 @@ input {
 
 .related__input {
     width: 33.3%;
+
 }
 
 .related__label {
@@ -238,6 +239,11 @@ input {
 .related__label--desktop {
     /*display: inline-block;*/
     display: none;
+}
+
+.guests_count {
+    display: flex;
+    align-items: center;
 }
 
 .submit-button {
@@ -259,7 +265,7 @@ input {
 .check__input:focus ~ .check__label--desktop,
 
 .related__input:not(:placeholder-shown) ~ .related__label--desktop,
-.related__input:hover ~ .related__label--desktop{
+.related__input:focus ~ .related__label--desktop{
     transform: translateY(-50px);
     color: var(--primary-white);
     transition: all .25s;
@@ -379,7 +385,12 @@ input {
     line-height: 14px;
 }
 
-.filter-hidden, .filter--hidden {
+.select-child-age {
+    border-color: var(--primary);
+}
+
+
+.filter-hidden, .filter--hidden, .age-choice__disabled {
     display: none;
 }
 
