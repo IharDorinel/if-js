@@ -1,11 +1,5 @@
 const homeGuestContentDiv = document.querySelector('#home-guest-content');
 const fetchData = [];
-
-const fetch = fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
-    .then((response) => response.json())
-    .then((data) => pushFetchData(data))
-    .catch((err) => console.log('This is error', err));
-
 const pushFetchData = () => {
   fetchData.push(fetch);
   if(fetchData.length !== 0)
@@ -21,6 +15,12 @@ const pushFetchData = () => {
     `;
   })}
 };
+
+const fetch = fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+    .then((response) => response.json())
+    .then((data) => pushFetchData(data))
+    .catch((err) => console.log('This is error', err));
+
 
 
 
