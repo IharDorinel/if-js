@@ -389,15 +389,9 @@ input {
     border-color: var(--primary);
 }
 
-
-.filter-hidden, .filter--hidden, .age-choice__disabled {
+.filter-hidden, .age-choice__disabled {
     display: none;
 }
-
-.filter-unhidden {
-    display: flex;
-}
-
 
 
 /*mobile*/

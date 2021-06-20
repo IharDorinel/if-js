@@ -37,7 +37,7 @@ const PlusAdults = event => {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults++;
         numberEl.innerHTML = counterAdults;
-        AdultsEl.innerHTML = `${counterAdults} ${'Adults'}`;
+        AdultsEl.innerHTML = `${'&nbsp;'} ${counterAdults} ${'Adults'}`;
         changeElMinusAdults.classList.remove('filter-disabled');
         changeDisabledMinusAdultEl.classList.remove('change-disabled');
     };
@@ -55,7 +55,7 @@ const MinusAdults = event => {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults--;
         numberEl.innerHTML = counterAdults;
-        AdultsEl.innerHTML = `${counterAdults} ${'Adults'}`;
+        AdultsEl.innerHTML = `${'&nbsp;&nbsp;'}${counterAdults} ${'Adults'}`;
         changeElPlusAdults.classList.remove('filter-disabled');
         changeDisabledElPlusAdults.classList.remove('change-disabled');
     };
@@ -71,14 +71,14 @@ changeElMinusAdults.addEventListener('click', MinusAdults);
 const PlusChildren = event => {
     if(counterChildren !== -1) {
         filterQuestEl.classList.remove('filter-hidden');
-        filterAge.classList.remove('filter--hidden');
+        filterAge.classList.remove('filter-hidden');
         FilterRelatedEl.classList.add('filter-related-newheight');
     };
     if(counterChildren < 10) {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren++;
         numberEl.innerHTML = counterChildren;
-        ChildrenEl.innerHTML = `${'&nbsp;—&nbsp;'} ${counterChildren} ${'Children'}`;
+        ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElMinusChildren.classList.remove('filter-disabled');
         changeDisabledMinusChildrenEl.classList.remove('change-disabled');
     };
@@ -94,13 +94,13 @@ changeElPlusChildren.addEventListener('click', PlusChildren);
 const MinusChildren = event => {
     if(counterChildren === 1) {
         filterQuestEl.classList.add('filter-hidden');
-        filterAge.classList.add('filter--hidden');
+        filterAge.classList.add('filter-hidden');
     };
     if(counterChildren > 0) {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren--;
         numberEl.innerHTML = counterChildren;
-        ChildrenEl.innerHTML = `${'&nbsp;—&nbsp;'} ${counterChildren} ${'Children'}`;
+        ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElPlusChildren.classList.remove('filter-disabled');
         changeDisabledPlusChildrenEl.classList.remove('change-disabled');
     };
@@ -120,7 +120,7 @@ const PlusRooms = event => {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms++;
         numberEl.innerHTML = counterRooms;
-        RoomsEl.innerHTML = `${'&nbsp;—&nbsp;'} ${counterRooms} ${'Rooms'}`;
+        RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
         changeElMinusRooms.classList.remove('filter-disabled');
         changeDisabledMinusRoomEl.classList.remove('change-disabled');
     };
@@ -138,7 +138,7 @@ const MinusRooms = event => {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms--;
         numberEl.innerHTML = counterRooms;
-        RoomsEl.innerHTML = `$${'&nbsp;—&nbsp;'} ${counterRooms} ${'Rooms'}`;
+        RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
         changeElPlusRooms.classList.remove('filter-disabled');
         changeDisabledElPlusRooms.classList.remove('change-disabled');
     };
