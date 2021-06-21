@@ -1,9 +1,7 @@
 const homeGuestContentDiv = document.querySelector('#home-guest-content');
-const fetchData = [];
-const pushFetchData = () => {
-  fetchData.push(fetch);
-  if(fetchData.length !== 0)
-  { fetchData.forEach((elem) => {
+const pushFetchData = (data) => {
+  if(data.length !== 0) {
+    data.forEach((elem) => {
     homeGuestContentDiv.innerHTML += `
         <div class="home-guests-box box">
           <a href="#" class="home-guests-photo-link">
@@ -16,7 +14,7 @@ const pushFetchData = () => {
   })}
 };
 
-const fetch = fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
     .then((response) => response.json())
     .then((data) => pushFetchData(data))
     .catch((err) => console.log('This is error', err));

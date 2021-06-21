@@ -24,6 +24,8 @@ a {
     align-items: flex-start;
     overflow: hidden;
     position: relative;
+    width: 1260px;
+    margin: auto;
 }
 
 .box {
