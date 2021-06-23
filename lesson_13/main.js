@@ -1,8 +1,7 @@
 const homeGuestContentDiv = document.querySelector('#home-guest-content');
 
 const pushFetchData = (data) => {
-    sessionStorage.setItem('homes-data', JSON.stringify(data))
-    if(data.length !== 0 && JSON.parse(sessionStorage.getItem('homes-data'))) {
+    if(data.length !== 0) {
         data.forEach((elem) => {
             homeGuestContentDiv.innerHTML += `
         <div class="home-guests-box box">
@@ -13,12 +12,25 @@ const pushFetchData = (data) => {
           <p class="home-destination home-text"><a href="#">${elem.city}, ${elem.country}</a></p>
         </div>
     `;
-        }
-        )}
+        })}
 };
 
-fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
-    .then(response => response.json())
-    .then(data => pushFetchData(data))
-    .catch(err => console.log('This is error', err));
+const sessionStorageCheck = () => {
+    if (sessionStorage.getItem('homes-data')) {
+        const data = JSON.parse(sessionStorage.getItem('homes-data'));
+        console.log(data);
+        pushFetchData(data);
+    } else {
+        fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+            .then(response => response.json())
+            .then(data => sessionStorage.setItem('homes-data', JSON.stringify(data)))
+            .catch(err => console.log('This is error', err));
+    }
+};
+
+sessionStorageCheck()
+
+
+
+
 
