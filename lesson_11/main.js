@@ -26,13 +26,13 @@ let counterChildren = 0;
 let counterRooms = 1;
 
 // по клику открывается фильтр
-const ShowFilter = event => {
+const showFilter = event => {
     FilterRelatedEl.classList.remove('filter-hidden');
 };
-RelatedEl.addEventListener('click', ShowFilter);
+RelatedEl.addEventListener('click', showFilter);
 
 // по клику увеличивается кол-во взрослых
-const PlusAdults = event => {
+const plusAdults = event => {
     if(counterAdults < 30) {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults++;
@@ -47,10 +47,10 @@ const PlusAdults = event => {
     };
 };
 
-changeElPlusAdults.addEventListener('click', PlusAdults);
+changeElPlusAdults.addEventListener('click', plusAdults);
 
 // по клику уменьшается кол-во взрослых
-const MinusAdults = event => {
+const minusAdults = event => {
     if(counterAdults > 1) {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults--;
@@ -65,10 +65,10 @@ const MinusAdults = event => {
     }
 };
 
-changeElMinusAdults.addEventListener('click', MinusAdults);
+changeElMinusAdults.addEventListener('click', minusAdults);
 
 // по клику увеличивается кол-во детей, открывается подсекция с вопросом и полем для выпад. списков
-const PlusChildren = event => {
+const plusChildren = event => {
     if(counterChildren !== -1) {
         filterQuestEl.classList.remove('filter-hidden');
         filterAge.classList.remove('filter-hidden');
@@ -88,10 +88,10 @@ const PlusChildren = event => {
     };
 };
 
-changeElPlusChildren.addEventListener('click', PlusChildren);
+changeElPlusChildren.addEventListener('click', plusChildren);
 
 // по клику уменьшается кол-во детей, закрывается подсекция с вопросом и полем для выпад. списков
-const MinusChildren = event => {
+const minusChildren = event => {
     if(counterChildren === 1) {
         filterQuestEl.classList.add('filter-hidden');
         filterAge.classList.add('filter-hidden');
@@ -103,8 +103,6 @@ const MinusChildren = event => {
         ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElPlusChildren.classList.remove('filter-disabled');
         changeDisabledPlusChildrenEl.classList.remove('change-disabled');
-        let selects = document.querySelectorAll('.select-child-age');
-        selects[selects.length - 1].remove();
     };
     if(counterChildren <= 0) {
         changeElMinusChildren.classList.add('filter-disabled');
@@ -112,12 +110,13 @@ const MinusChildren = event => {
         FilterRelatedEl.classList.remove('filter-hidden');
         FilterRelatedEl.classList.remove('filter-related-newheight');
     }
+    changeElPlusChildren.addEventListener('click', addChildSelect);
 };
 
-changeElMinusChildren.addEventListener('click', MinusChildren);
+changeElMinusChildren.addEventListener('click', minusChildren);
 
 // по клику увеличивается кол-во комнат
-const PlusRooms = event => {
+const plusRooms = event => {
     if(counterRooms < 30) {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms++;
@@ -132,10 +131,10 @@ const PlusRooms = event => {
     };
 };
 
-changeElPlusRooms.addEventListener('click', PlusRooms);
+changeElPlusRooms.addEventListener('click', plusRooms);
 
 // по клику уменьшается кол-во комнат
-const MinusRooms = event => {
+const minusRooms = event => {
     if(counterRooms > 1) {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms--;
@@ -150,7 +149,7 @@ const MinusRooms = event => {
     }
 };
 
-changeElMinusRooms.addEventListener('click', MinusRooms);
+changeElMinusRooms.addEventListener('click', minusRooms);
 
 // добавление выпад. списков при увеличении кол-ва детей
 const addChildSelect = () => {
@@ -185,12 +184,14 @@ const addChildSelect = () => {
 changeElPlusChildren.addEventListener('click', addChildSelect);
 
 // удаление выпад. списков при уменьшении кол-ва детей
-// const removeChildSelect = () => {
-//     let selects = document.querySelectorAll('.select-child-age');
-//     selects[selects.length - 1].remove();
-// };
-//
-// changeElMinusChildren.addEventListener('click', removeChildSelect);
+const removeChildSelect = () => {
+    let selects = document.querySelectorAll('.select-child-age');
+    if(selects.length <= 0) return;
+    return selects[selects.length - 1].remove();
+};
+
+changeElMinusChildren.addEventListener('click', removeChildSelect);
+
 
 
 
