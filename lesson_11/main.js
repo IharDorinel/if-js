@@ -103,6 +103,8 @@ const MinusChildren = event => {
         ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElPlusChildren.classList.remove('filter-disabled');
         changeDisabledPlusChildrenEl.classList.remove('change-disabled');
+        let selects = document.querySelectorAll('.select-child-age');
+        selects[selects.length - 1].remove();
     };
     if(counterChildren <= 0) {
         changeElMinusChildren.classList.add('filter-disabled');
@@ -183,12 +185,12 @@ const addChildSelect = () => {
 changeElPlusChildren.addEventListener('click', addChildSelect);
 
 // удаление выпад. списков при уменьшении кол-ва детей
-const removeChildSelect = () => {
-    let selects = document.querySelectorAll('.select-child-age');
-    selects[selects.length - 1].remove();
-};
-
-changeElMinusChildren.addEventListener('click', removeChildSelect);
+// const removeChildSelect = () => {
+//     let selects = document.querySelectorAll('.select-child-age');
+//     selects[selects.length - 1].remove();
+// };
+//
+// changeElMinusChildren.addEventListener('click', removeChildSelect);
 
 
 
