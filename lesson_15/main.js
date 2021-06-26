@@ -1,13 +1,14 @@
 // Поиск отелей
 const availHotelsContentDiv = document.querySelector('#home-guest-content');
 const formEl = document.querySelector('.search-form');
+const filterEl = document.querySelector('.filter-related');
 const buttonEl = document.querySelector('.submit-button');
 
 const takeFormValue = (event) => {
     const search = formEl.querySelector('[name="destination"]')
-    const adults = formEl.querySelector('#numberAdults');
-    const rooms = formEl.querySelector('#numberRooms');
-    const children = formEl.querySelectorAll('select');
+    const adults = filterEl.querySelector('#numberAdults');
+    const rooms = filterEl.querySelector('#numberRooms');
+    const children = document.querySelectorAll('select');
 
     const childrenArr = [];
     children.forEach(child => {
@@ -254,3 +255,4 @@ const removeChildSelect = () => {
 };
 
 changeElMinusChildren.addEventListener('click', removeChildSelect);
+
