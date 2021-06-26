@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint lesson_15/main.js"
+    "lint": "eslint lesson_15/main.js"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test",
-      "pre-push": "npm run test"
+      "pre-commit": "npm run lint"
     }
   }
 }
