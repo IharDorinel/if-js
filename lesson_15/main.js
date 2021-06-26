@@ -2,15 +2,15 @@
 const availHotelsContentDiv = document.querySelector('#home-guest-content');
 const formEl = document.querySelector('.search-form');
 const buttonEl = document.querySelector('.submit-button');
-console.log('buttonEl: ', buttonEl);
+
 
 const takeFormValue = (event) => {
   event.preventDefault();
 
   const search = formEl.querySelector('[name="destination"]');
-  console.dir('search: ', search);
+
   const adults = document.querySelector('#numberAdults');
-  console.dir('adults: ', adults);
+
   const rooms = document.querySelector('#numberRooms');
   const children = document.querySelectorAll('select');
 
@@ -26,7 +26,6 @@ const takeFormValue = (event) => {
     rooms: rooms.innerHTML,
   };
 
-  console.log("values: ", values);
 
   const url = new URL('https://fe-student-api.herokuapp.com/api/hotels');
   const params = {
