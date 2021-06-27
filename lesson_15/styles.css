@@ -275,7 +275,7 @@ input {
 .header-mobile-icons {
     border: none;
     width: inherit;
-    margin-top: -45px;
+    margin-top: -150px;
     text-align: center;
 }
 
@@ -396,6 +396,7 @@ input {
 
 .avail-hotels {
     background-color: #EAF0F9;
+    margin-top: 50px;
 }
 
 .homes-guests-container, .avail-hotels-container {
@@ -434,6 +435,10 @@ input {
 
 .home-destination {
     color: #BFBFBF;
+}
+
+#avail-not {
+    margin-top: 110px;
 }
 
 .switcher {

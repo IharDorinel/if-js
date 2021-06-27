@@ -3,6 +3,7 @@ const sectionEl = document.querySelector('.avail-hotels');
 const availHotelsContentDiv = document.querySelector('#avail-hotels-content');
 const formEl = document.querySelector('.search-form');
 const FilterRelatedEl = document.querySelector('.filter-related');
+const availNotEl = document.querySelector('#avail-not');
 
 const takeFormValue = (event) => {
   event.preventDefault();
@@ -49,9 +50,11 @@ const takeFormValue = (event) => {
         </div>
     `;
       });
+      availNotEl.classList.add('filter-hidden');
+
     } else {
       sectionEl.classList.add('filter-hidden');
-      alert('Sorry, there are no places on your request:(');
+      availNotEl.classList.remove('filter-hidden');
     };
   };
 
