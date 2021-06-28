@@ -63,7 +63,6 @@ const takeFormValue = (event) => {
     if(params.search.length !== 0) {
       fetch(url)
         .then(response => response.json())
-        // .then(data => bubbleSort(data))
         .then(data => searchAvail(data))
         .catch(err => console.log('This is error', err));
       filterRelatedEl.classList.add('filter-hidden');
