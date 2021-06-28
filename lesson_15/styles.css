@@ -30,7 +30,6 @@ h1 {
     font-weight: 500;
     line-height: 46px;
     text-align: center;
-    margin-top: 0;
 }
 
 a {
@@ -237,7 +236,6 @@ input {
 }
 
 .related__label--desktop {
-    /*display: inline-block;*/
     display: none;
 }
 
@@ -270,7 +268,6 @@ input {
     color: var(--primary-white);
     transition: all .25s;
 }
-
 
 .header-mobile-icons {
     border: none;
@@ -389,18 +386,21 @@ input {
     display: none;
 }
 
-
-.homes-guests {
+.home-guests {
     background-color: #EAF0F9;
+    padding-top: 50px;
 }
 
 .avail-hotels {
     background-color: #EAF0F9;
-    margin-top: 50px;
 }
 
-.homes-guests-container, .avail-hotels-container {
-    padding: 120px 25px 120px;
+.homes-guests-container {
+    padding: 120px 25px 0;
+}
+
+.avail-hotels-container {
+    padding: 50px 25px 0;
 }
 
 .home-guests-gallery, .best-destinations-gallery, .avail-hotels-gallery, .gallery {

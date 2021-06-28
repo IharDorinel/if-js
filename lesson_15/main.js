@@ -1,8 +1,9 @@
 // Поиск отелей
 const sectionEl = document.querySelector('.avail-hotels');
 const availHotelsContentDiv = document.querySelector('#avail-hotels-content');
+const homeGuestContentDiv = document.querySelector('#home-guest-content');
 const formEl = document.querySelector('.search-form');
-const FilterRelatedEl = document.querySelector('.filter-related');
+const filterRelatedEl = document.querySelector('.filter-related');
 const availNotEl = document.querySelector('#avail-not');
 
 const takeFormValue = (event) => {
@@ -59,11 +60,17 @@ const takeFormValue = (event) => {
   };
 
   const getRequest = (url) => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => searchAvail(data))
-      .catch((err) => console.log('This is error', err));
-    FilterRelatedEl.classList.add('filter-hidden');
+    if(params.search.length !== 0) {
+      fetch(url)
+        .then(response => response.json())
+        // .then(data => bubbleSort(data))
+        .then(data => searchAvail(data))
+        .catch(err => console.log('This is error', err));
+      filterRelatedEl.classList.add('filter-hidden');
+    } else {
+      sectionEl.classList.add('filter-hidden');
+      availNotEl.classList.add('filter-hidden');
+    }
   };
 
   getRequest(url);
@@ -71,12 +78,49 @@ const takeFormValue = (event) => {
 
 formEl.addEventListener('submit', takeFormValue);
 
-// фильтр
-const RelatedEl = document.querySelector('.related');
 
-const AdultsEl = document.querySelector('#adults');
-const ChildrenEl = document.querySelector('#children');
-const RoomsEl = document.querySelector('#rooms');
+// Сортировка пузырьком секции Homes guests loves
+const bubbleSort = (data) => {
+  for (let i = 0; i < data.length - 1; i++) {
+    for (let j = 0; j < data.length - 1 - i; j++) {
+      if (data[j].name > data[j+1].name) {
+        let tmp = data[j+1];
+        data[j+1] = data[j];
+        data[j] = tmp;
+      }
+    }
+  }
+  return data;
+};
+
+const pushFetchData = (data) => {
+    if(data.length !== 0) {
+        data.forEach((elem) => {
+            homeGuestContentDiv.innerHTML += `
+        <div class="home-guests-box box">
+          <a href="#" class="home-guests-photo-link">
+            <img class="home-guests-photo photo" src=${elem.imageUrl} alt="hotel_leopold">
+          </a>
+          <p class="home-hotel-name home-text"><a href="#">${elem.name}</a></p>
+          <p class="home-destination home-text"><a href="#">${elem.city}, ${elem.country}</a></p>
+        </div>
+    `;
+        })}
+};
+
+fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+    .then((response) => response.json())
+    .then((data) => bubbleSort(data))
+    .then((data) => pushFetchData(data))
+    .catch((err) => console.log('This is error', err));
+
+
+// фильтр
+const relatedEl = document.querySelector('.related');
+
+const adultsEl = document.querySelector('#adults');
+const childrenEl = document.querySelector('#children');
+const roomsEl = document.querySelector('#rooms');
 
 const changeElPlusAdults = document.querySelector('#changePlusAdults');
 const changeElMinusAdults = document.querySelector('#changeMinusAdults');
@@ -100,9 +144,9 @@ let counterRooms = 1;
 
 // по клику открывается фильтр
 const showFilter = (event) => {
-  FilterRelatedEl.classList.remove('filter-hidden');
+  filterRelatedEl.classList.remove('filter-hidden');
 };
-RelatedEl.addEventListener('click', showFilter);
+relatedEl.addEventListener('click', showFilter);
 
 // по клику увеличивается кол-во взрослых
 const plusAdults = (event) => {
@@ -112,7 +156,7 @@ const plusAdults = (event) => {
     counterAdults++;
 
     numberEl.innerHTML = counterAdults;
-    AdultsEl.innerHTML = `${'&nbsp;'} ${counterAdults} ${'Adults'}`;
+    adultsEl.innerHTML = `${'&nbsp;'} ${counterAdults} ${'Adults'}`;
 
     changeElMinusAdults.classList.remove('filter-disabled');
     changeDisabledMinusAdultEl.classList.remove('change-disabled');
@@ -132,7 +176,7 @@ const minusAdults = (event) => {
     const numberEl = document.querySelector('#numberAdults');
     counterAdults--;
     numberEl.innerHTML = counterAdults;
-    AdultsEl.innerHTML = `${'&nbsp;&nbsp;'}${counterAdults} ${'Adults'}`;
+    adultsEl.innerHTML = `${'&nbsp;&nbsp;'}${counterAdults} ${'Adults'}`;
     changeElPlusAdults.classList.remove('filter-disabled');
     changeDisabledElPlusAdults.classList.remove('change-disabled');
   }
@@ -150,14 +194,14 @@ const plusChildren = (event) => {
   if (counterChildren !== -1) {
     filterQuestEl.classList.remove('filter-hidden');
     filterAge.classList.remove('filter-hidden');
-    FilterRelatedEl.classList.add('filter-related-newheight');
+    filterRelatedEl.classList.add('filter-related-newheight');
   }
 
   if (counterChildren < 10) {
     const numberEl = document.querySelector('#numberChildren');
     counterChildren++;
     numberEl.innerHTML = counterChildren;
-    ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
+    childrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
     changeElMinusChildren.classList.remove('filter-disabled');
     changeDisabledMinusChildrenEl.classList.remove('change-disabled');
   }
@@ -181,7 +225,7 @@ const minusChildren = (event) => {
     const numberEl = document.querySelector('#numberChildren');
     counterChildren--;
     numberEl.innerHTML = counterChildren;
-    ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
+    childrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
     changeElPlusChildren.classList.remove('filter-disabled');
     changeDisabledPlusChildrenEl.classList.remove('change-disabled');
   }
@@ -189,8 +233,8 @@ const minusChildren = (event) => {
   if (counterChildren <= 0) {
     changeElMinusChildren.classList.add('filter-disabled');
     changeDisabledMinusChildrenEl.classList.add('change-disabled');
-    FilterRelatedEl.classList.remove('filter-hidden');
-    FilterRelatedEl.classList.remove('filter-related-newheight');
+    filterRelatedEl.classList.remove('filter-hidden');
+    filterRelatedEl.classList.remove('filter-related-newheight');
   }
   changeElPlusChildren.addEventListener('click', addChildSelect);
 };
@@ -203,7 +247,7 @@ const plusRooms = (event) => {
     const numberEl = document.querySelector('#numberRooms');
     counterRooms++;
     numberEl.innerHTML = counterRooms;
-    RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
+    roomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
     changeElMinusRooms.classList.remove('filter-disabled');
     changeDisabledMinusRoomEl.classList.remove('change-disabled');
   }
@@ -222,7 +266,7 @@ const minusRooms = (event) => {
     const numberEl = document.querySelector('#numberRooms');
     counterRooms--;
     numberEl.innerHTML = counterRooms;
-    RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
+    roomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
     changeElPlusRooms.classList.remove('filter-disabled');
     changeDisabledElPlusRooms.classList.remove('change-disabled');
   }
@@ -275,3 +319,6 @@ const removeChildSelect = () => {
 };
 
 changeElMinusChildren.addEventListener('click', removeChildSelect);
+
+
+
