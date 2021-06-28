@@ -1,9 +1,9 @@
-const RelatedEl = document.querySelector('.related');
-const FilterRelatedEl = document.querySelector('.filter-related');
+const relatedEl = document.querySelector('.related');
+const filterRelatedEl = document.querySelector('.filter-related');
 
-const AdultsEl = document.querySelector('#adults');
-const ChildrenEl = document.querySelector('#children');
-const RoomsEl = document.querySelector('#rooms');
+const adultsEl = document.querySelector('#adults');
+const childrenEl = document.querySelector('#children');
+const roomsEl = document.querySelector('#rooms');
 
 const changeElPlusAdults = document.querySelector('#changePlusAdults');
 const changeElMinusAdults = document.querySelector('#changeMinusAdults');
@@ -27,9 +27,9 @@ let counterRooms = 1;
 
 // по клику открывается фильтр
 const showFilter = event => {
-    FilterRelatedEl.classList.remove('filter-hidden');
+    filterRelatedEl.classList.remove('filter-hidden');
 };
-RelatedEl.addEventListener('click', showFilter);
+relatedEl.addEventListener('click', showFilter);
 
 // по клику увеличивается кол-во взрослых
 const plusAdults = event => {
@@ -37,7 +37,7 @@ const plusAdults = event => {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults++;
         numberEl.innerHTML = counterAdults;
-        AdultsEl.innerHTML = `${'&nbsp;'} ${counterAdults} ${'Adults'}`;
+        adultsEl.innerHTML = `${'&nbsp;'} ${counterAdults} ${'Adults'}`;
         changeElMinusAdults.classList.remove('filter-disabled');
         changeDisabledMinusAdultEl.classList.remove('change-disabled');
     };
@@ -51,11 +51,11 @@ changeElPlusAdults.addEventListener('click', plusAdults);
 
 // по клику уменьшается кол-во взрослых
 const minusAdults = event => {
-    if(counterAdults > 1) {
+    if(counterAdults > 0) {
         const numberEl = document.querySelector('#numberAdults');
         counterAdults--;
         numberEl.innerHTML = counterAdults;
-        AdultsEl.innerHTML = `${'&nbsp;&nbsp;'}${counterAdults} ${'Adults'}`;
+        adultsEl.innerHTML = `${'&nbsp;&nbsp;'}${counterAdults} ${'Adults'}`;
         changeElPlusAdults.classList.remove('filter-disabled');
         changeDisabledElPlusAdults.classList.remove('change-disabled');
     };
@@ -72,13 +72,13 @@ const plusChildren = event => {
     if(counterChildren !== -1) {
         filterQuestEl.classList.remove('filter-hidden');
         filterAge.classList.remove('filter-hidden');
-        FilterRelatedEl.classList.add('filter-related-newheight');
+        filterRelatedEl.classList.add('filter-related-newheight');
     };
     if(counterChildren < 10) {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren++;
         numberEl.innerHTML = counterChildren;
-        ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
+        childrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElMinusChildren.classList.remove('filter-disabled');
         changeDisabledMinusChildrenEl.classList.remove('change-disabled');
     };
@@ -100,15 +100,15 @@ const minusChildren = event => {
         const numberEl = document.querySelector('#numberChildren');
         counterChildren--;
         numberEl.innerHTML = counterChildren;
-        ChildrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
+        childrenEl.innerHTML = `${'&nbsp;—'} ${counterChildren} ${'Children'}`;
         changeElPlusChildren.classList.remove('filter-disabled');
         changeDisabledPlusChildrenEl.classList.remove('change-disabled');
     };
     if(counterChildren <= 0) {
         changeElMinusChildren.classList.add('filter-disabled');
         changeDisabledMinusChildrenEl.classList.add('change-disabled');
-        FilterRelatedEl.classList.remove('filter-hidden');
-        FilterRelatedEl.classList.remove('filter-related-newheight');
+        filterRelatedEl.classList.remove('filter-hidden');
+        filterRelatedEl.classList.remove('filter-related-newheight');
     }
     changeElPlusChildren.addEventListener('click', addChildSelect);
 };
@@ -121,7 +121,7 @@ const plusRooms = event => {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms++;
         numberEl.innerHTML = counterRooms;
-        RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
+        roomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
         changeElMinusRooms.classList.remove('filter-disabled');
         changeDisabledMinusRoomEl.classList.remove('change-disabled');
     };
@@ -135,11 +135,11 @@ changeElPlusRooms.addEventListener('click', plusRooms);
 
 // по клику уменьшается кол-во комнат
 const minusRooms = event => {
-    if(counterRooms > 1) {
+    if(counterRooms > 0) {
         const numberEl = document.querySelector('#numberRooms');
         counterRooms--;
         numberEl.innerHTML = counterRooms;
-        RoomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
+        roomsEl.innerHTML = `${'&nbsp;—'} ${counterRooms} ${'Rooms'}`;
         changeElPlusRooms.classList.remove('filter-disabled');
         changeDisabledElPlusRooms.classList.remove('change-disabled');
     };
