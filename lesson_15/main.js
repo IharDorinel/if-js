@@ -1,16 +1,15 @@
 // Поиск отелей
-const availHotelsContentDiv = document.querySelector('#home-guest-content');
+const sectionEl = document.querySelector('.avail-hotels');
+const availHotelsContentDiv = document.querySelector('#avail-hotels-content');
 const formEl = document.querySelector('.search-form');
-const buttonEl = document.querySelector('.submit-button');
-
+const FilterRelatedEl = document.querySelector('.filter-related');
+const availNotEl = document.querySelector('#avail-not');
 
 const takeFormValue = (event) => {
   event.preventDefault();
 
   const search = formEl.querySelector('[name="destination"]');
-
   const adults = document.querySelector('#numberAdults');
-
   const rooms = document.querySelector('#numberRooms');
   const children = document.querySelectorAll('select');
 
@@ -26,7 +25,6 @@ const takeFormValue = (event) => {
     rooms: rooms.innerHTML,
   };
 
-
   const url = new URL('https://fe-student-api.herokuapp.com/api/hotels');
   const params = {
     search: values.search,
@@ -37,21 +35,27 @@ const takeFormValue = (event) => {
   url.search = new URLSearchParams(params).toString();
 
   const searchAvail = (data) => {
+    sectionEl.classList.remove('filter-hidden');
     availHotelsContentDiv.innerHTML = '';
 
     if (data.length !== 0) {
       data.forEach((elem) => {
         availHotelsContentDiv.innerHTML += `
-        <div class="home-guests-box box">
-          <a href="#" class="home-guests-photo-link">
-            <img class="home-guests-photo photo" src=${elem.imageUrl} alt="hotel_leopold">
+        <div class="avail-hotels-box box">
+          <a href="#" class="avail-hotels-photo-link">
+            <img class="avail-hotels-photo photo" src=${elem.imageUrl} alt="hotel_leopold">
           </a>
           <p class="home-hotel-name home-text"><a href="#">${elem.name}</a></p>
           <p class="home-destination home-text"><a href="#">${elem.city}, ${elem.country}</a></p>
         </div>
     `;
       });
-    }
+      availNotEl.classList.add('filter-hidden');
+
+    } else {
+      sectionEl.classList.add('filter-hidden');
+      availNotEl.classList.remove('filter-hidden');
+    };
   };
 
   const getRequest = (url) => {
@@ -59,6 +63,7 @@ const takeFormValue = (event) => {
       .then((response) => response.json())
       .then((data) => searchAvail(data))
       .catch((err) => console.log('This is error', err));
+    FilterRelatedEl.classList.add('filter-hidden');
   };
 
   getRequest(url);
@@ -68,7 +73,6 @@ formEl.addEventListener('submit', takeFormValue);
 
 // фильтр
 const RelatedEl = document.querySelector('.related');
-const FilterRelatedEl = document.querySelector('.filter-related');
 
 const AdultsEl = document.querySelector('#adults');
 const ChildrenEl = document.querySelector('#children');

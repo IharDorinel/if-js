@@ -275,7 +275,7 @@ input {
 .header-mobile-icons {
     border: none;
     width: inherit;
-    margin-top: -45px;
+    margin-top: -150px;
     text-align: center;
 }
 
@@ -394,11 +394,16 @@ input {
     background-color: #EAF0F9;
 }
 
-.homes-guests-container {
+.avail-hotels {
+    background-color: #EAF0F9;
+    margin-top: 50px;
+}
+
+.homes-guests-container, .avail-hotels-container {
     padding: 120px 25px 120px;
 }
 
-.home-guests-gallery, .best-destinations-gallery, .gallery {
+.home-guests-gallery, .best-destinations-gallery, .avail-hotels-gallery, .gallery {
     display: flex;
     align-items: flex-start;
     overflow: hidden;
@@ -407,11 +412,11 @@ input {
     margin: auto;
 }
 
-.box {
+.box, .avail-hotels-box {
     margin-right: 15px;
 }
 
-.photo {
+.photo, .avail-hotels-photo {
     width: 300px;
     height: 300px;
     object-fit: cover;
@@ -430,6 +435,10 @@ input {
 
 .home-destination {
     color: #BFBFBF;
+}
+
+#avail-not {
+    margin-top: 110px;
 }
 
 .switcher {
