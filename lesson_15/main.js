@@ -73,9 +73,11 @@ const takeFormValue = (event) => {
   };
 
   getRequest(url);
+
 };
 
 formEl.addEventListener('submit', takeFormValue);
+
 
 
 // Сортировка пузырьком секции Homes guests loves
