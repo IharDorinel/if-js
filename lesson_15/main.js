@@ -145,7 +145,7 @@ let counterRooms = 1;
 
 // по клику открывается фильтр
 const showFilter = (event) => {
-  filterRelatedEl.classList.remove('filter-hidden');
+  filterRelatedEl.classList.toggle('filter-hidden');
 };
 relatedEl.addEventListener('click', showFilter);
 
