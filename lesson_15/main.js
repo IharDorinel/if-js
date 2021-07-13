@@ -73,9 +73,11 @@ const takeFormValue = (event) => {
   };
 
   getRequest(url);
+
 };
 
 formEl.addEventListener('submit', takeFormValue);
+
 
 
 // Сортировка пузырьком секции Homes guests loves
@@ -93,9 +95,9 @@ const bubbleSort = (data) => {
 };
 
 const pushFetchData = (data) => {
-    if(data.length !== 0) {
-        data.forEach((elem) => {
-            homeGuestContentDiv.innerHTML += `
+  if(data.length !== 0) {
+    data.forEach((elem) => {
+      homeGuestContentDiv.innerHTML += `
         <div class="home-guests-box box">
           <a href="#" class="home-guests-photo-link">
             <img class="home-guests-photo photo" src=${elem.imageUrl} alt="hotel_leopold">
@@ -104,14 +106,14 @@ const pushFetchData = (data) => {
           <p class="home-destination home-text"><a href="#">${elem.city}, ${elem.country}</a></p>
         </div>
     `;
-        })}
+    })}
 };
 
 fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
-    .then((response) => response.json())
-    .then((data) => bubbleSort(data))
-    .then((data) => pushFetchData(data))
-    .catch((err) => console.log('This is error', err));
+  .then((response) => response.json())
+  .then((data) => bubbleSort(data))
+  .then((data) => pushFetchData(data))
+  .catch((err) => console.log('This is error', err));
 
 
 // фильтр
@@ -143,7 +145,7 @@ let counterRooms = 1;
 
 // по клику открывается фильтр
 const showFilter = (event) => {
-  filterRelatedEl.classList.remove('filter-hidden');
+  filterRelatedEl.classList.toggle('filter-hidden');
 };
 relatedEl.addEventListener('click', showFilter);
 
