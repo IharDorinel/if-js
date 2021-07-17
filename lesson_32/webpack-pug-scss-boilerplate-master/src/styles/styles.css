@@ -347,7 +347,7 @@ input {
     font-weight: 400;
     line-height: 21px;
     color: var(--primary);
-    }
+}
 
 .change-disabled {
     color: #CECECE;

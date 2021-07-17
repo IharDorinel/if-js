@@ -1,21 +1,9 @@
 {
-  "name": "if",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint lesson_15/main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IharDorinel/if-js.git"
-  },
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/IharDorinel/if-js/issues"
   },
-  "homepage": "https://github.com/IharDorinel/if-js#readme",
+  "description": "",
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -23,9 +11,23 @@
     "husky": "^6.0.0",
     "jest": "^26.6.3"
   },
+  "homepage": "https://github.com/IharDorinel/if-js#readme",
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
     }
-  }
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "name": "if",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IharDorinel/if-js.git"
+  },
+  "scripts": {
+    "lint": "eslint lesson_15/main.js",
+    "start": "webpack-dev-server --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js"
+  },
+  "version": "1.0.0"
 }
